@@ -1,0 +1,743 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB49Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ClassAttendance">
+    <Key>
+      <PropertyRef Name="AttendanceID" />
+    </Key>
+    <Property Name="AttendanceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SectionID" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="CourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DepartmentID" Type="int" Nullable="false" />
+    <Property Name="SessionID" Type="int" Nullable="false" />
+    <Property Name="CreditHours" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="DepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DepartmentName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FatherName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CNIC" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Designation" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="ContactNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmailID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MonthlySalary" Type="int" Nullable="false" />
+    <Property Name="DOB" Type="datetime" Nullable="false" />
+    <Property Name="LoginID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Exam">
+    <Key>
+      <PropertyRef Name="ExamID" />
+    </Key>
+    <Property Name="ExamID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExamDate" Type="datetime" Nullable="false" />
+    <Property Name="SessionID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB49.dbo.Expenditure' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Expenditure">
+    <Key>
+      <PropertyRef Name="FeeID" />
+      <PropertyRef Name="SalaryID" />
+      <PropertyRef Name="ExpenditureID" />
+    </Key>
+    <Property Name="FeeID" Type="int" Nullable="false" />
+    <Property Name="SalaryID" Type="int" Nullable="false" />
+    <Property Name="ExpenditureID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Fe">
+    <Key>
+      <PropertyRef Name="FeeID" />
+    </Key>
+    <Property Name="FeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScholarshipID" Type="int" Nullable="false" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="LoginID" />
+    </Key>
+    <Property Name="LoginID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RegisteredCourses">
+    <Key>
+      <PropertyRef Name="RegisteredCourseID" />
+    </Key>
+    <Property Name="RegisteredCourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="CourseID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="ResultID" />
+    </Key>
+    <Property Name="ResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SectionID" Type="int" />
+    <Property Name="CGPA" Type="float" />
+    <Property Name="Grade" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreditHours" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SessionId" Type="int" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="RegisteredCourseID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Salary">
+    <Key>
+      <PropertyRef Name="SalaryID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="Salary" Type="int" Nullable="false" />
+    <Property Name="Month" Type="datetime" Nullable="false" />
+    <Property Name="SalaryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Scholarship">
+    <Key>
+      <PropertyRef Name="ScholarshipID" />
+    </Key>
+    <Property Name="ScholarshipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScholarshipName" Type="nvarchar(max)" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Section">
+    <Key>
+      <PropertyRef Name="SectionID" />
+    </Key>
+    <Property Name="SectionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SectionName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DepartmentID" Type="int" Nullable="false" />
+    <Property Name="SessionID" Type="int" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Session">
+    <Key>
+      <PropertyRef Name="SessionID" />
+    </Key>
+    <Property Name="SessionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Session" Type="int" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FatherName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmailId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RegistrationNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CNIC" Type="nvarchar" MaxLength="50" />
+    <Property Name="DepartmentID" Type="int" Nullable="false" />
+    <Property Name="SessionId" Type="int" Nullable="false" />
+    <Property Name="DOB" Type="datetime" Nullable="false" />
+    <Property Name="LoginID" Type="int" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB49.dbo.StudentAttendance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="StudentAttendance">
+    <Key>
+      <PropertyRef Name="AttendanceID" />
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="AttendanceID" Type="int" Nullable="false" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB49.dbo.StudentResult' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="StudentResult">
+    <Key>
+      <PropertyRef Name="StudentID" />
+      <PropertyRef Name="ResultID" />
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="ResultID" Type="int" Nullable="false" />
+    <Property Name="GPA" Type="float" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DB49.dbo.TimeTable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TimeTable">
+    <Key>
+      <PropertyRef Name="CoursesID" />
+      <PropertyRef Name="Time" />
+      <PropertyRef Name="SectionID" />
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="CoursesID" Type="int" Nullable="false" />
+    <Property Name="Time" Type="datetime" Nullable="false" />
+    <Property Name="SectionID" Type="int" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ClassAttendance_Section">
+    <End Role="Section" Type="Self.Section" Multiplicity="1" />
+    <End Role="ClassAttendance" Type="Self.ClassAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="SectionID" />
+      </Principal>
+      <Dependent Role="ClassAttendance">
+        <PropertyRef Name="SectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_Department">
+    <End Role="Session" Type="Self.Session" Multiplicity="1" />
+    <End Role="Course" Type="Self.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Session">
+        <PropertyRef Name="SessionID" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_Session">
+    <End Role="Session" Type="Self.Session" Multiplicity="1" />
+    <End Role="Course" Type="Self.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Session">
+        <PropertyRef Name="SessionID" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Login">
+    <End Role="Login" Type="Self.Login" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="LoginID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="LoginID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Exam_Exam">
+    <End Role="Session" Type="Self.Session" Multiplicity="1" />
+    <End Role="Exam" Type="Self.Exam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Session">
+        <PropertyRef Name="SessionID" />
+      </Principal>
+      <Dependent Role="Exam">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Expenditure_Fe">
+    <End Role="Fe" Type="Self.Fe" Multiplicity="1" />
+    <End Role="Expenditure" Type="Self.Expenditure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fe">
+        <PropertyRef Name="FeeID" />
+      </Principal>
+      <Dependent Role="Expenditure">
+        <PropertyRef Name="FeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Expenditure_SalaryID">
+    <End Role="Salary" Type="Self.Salary" Multiplicity="1" />
+    <End Role="Expenditure" Type="Self.Expenditure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salary">
+        <PropertyRef Name="SalaryID" />
+      </Principal>
+      <Dependent Role="Expenditure">
+        <PropertyRef Name="SalaryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fe_Scholarship">
+    <End Role="Scholarship" Type="Self.Scholarship" Multiplicity="1" />
+    <End Role="Fe" Type="Self.Fe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Scholarship">
+        <PropertyRef Name="ScholarshipID" />
+      </Principal>
+      <Dependent Role="Fe">
+        <PropertyRef Name="ScholarshipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fe_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="Fe" Type="Self.Fe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="Fe">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegisyeredCourses_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="RegisteredCourses" Type="Self.RegisteredCourses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="RegisteredCourses">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegisyeredCourses_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="RegisteredCourses" Type="Self.RegisteredCourses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="RegisteredCourses">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Result_RegisteredCourses">
+    <End Role="RegisteredCourses" Type="Self.RegisteredCourses" Multiplicity="1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegisteredCourses">
+        <PropertyRef Name="RegisteredCourseID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="RegisteredCourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Result_SectionID">
+    <End Role="Section" Type="Self.Section" Multiplicity="0..1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="SectionID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="SessionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Result_Session">
+    <End Role="Session" Type="Self.Session" Multiplicity="0..1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Session">
+        <PropertyRef Name="SessionID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="SessionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Salary_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Salary" Type="Self.Salary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Salary">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Scholarship_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="Scholarship" Type="Self.Scholarship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="Scholarship">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Section_Department">
+    <End Role="Department" Type="Self.Department" Multiplicity="1" />
+    <End Role="Section" Type="Self.Section" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="DepartmentID" />
+      </Principal>
+      <Dependent Role="Section">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Section_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Section" Type="Self.Section" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="Section">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Section_Session">
+    <End Role="Session" Type="Self.Session" Multiplicity="1" />
+    <End Role="Section" Type="Self.Section" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Session">
+        <PropertyRef Name="SessionID" />
+      </Principal>
+      <Dependent Role="Section">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Department">
+    <End Role="Department" Type="Self.Department" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="DepartmentID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Login">
+    <End Role="Login" Type="Self.Login" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="LoginID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="LoginID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Session">
+    <End Role="Session" Type="Self.Session" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Session">
+        <PropertyRef Name="SessionID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="SessionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentAttendance_ClassAttendance">
+    <End Role="ClassAttendance" Type="Self.ClassAttendance" Multiplicity="1" />
+    <End Role="StudentAttendance" Type="Self.StudentAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassAttendance">
+        <PropertyRef Name="AttendanceID" />
+      </Principal>
+      <Dependent Role="StudentAttendance">
+        <PropertyRef Name="AttendanceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentAttendance_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="StudentAttendance" Type="Self.StudentAttendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="StudentAttendance">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentResult_Result">
+    <End Role="Result" Type="Self.Result" Multiplicity="1" />
+    <End Role="StudentResult" Type="Self.StudentResult" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Result">
+        <PropertyRef Name="ResultID" />
+      </Principal>
+      <Dependent Role="StudentResult">
+        <PropertyRef Name="ResultID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentResult_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="StudentResult" Type="Self.StudentResult" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="StudentResult">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TimeTable_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="TimeTable" Type="Self.TimeTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="TimeTable">
+        <PropertyRef Name="CoursesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TimeTable_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="TimeTable" Type="Self.TimeTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeID" />
+      </Principal>
+      <Dependent Role="TimeTable">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TimeTable_Section">
+    <End Role="Section" Type="Self.Section" Multiplicity="1" />
+    <End Role="TimeTable" Type="Self.TimeTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="SectionID" />
+      </Principal>
+      <Dependent Role="TimeTable">
+        <PropertyRef Name="SectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="DB49ModelStoreContainer">
+    <EntitySet Name="ClassAttendance" EntityType="Self.ClassAttendance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exam" EntityType="Self.Exam" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fe" EntityType="Self.Fe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegisteredCourses" EntityType="Self.RegisteredCourses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Result" EntityType="Self.Result" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Salary" EntityType="Self.Salary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Scholarship" EntityType="Self.Scholarship" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Session" EntityType="Self.Session" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Expenditure" EntityType="Self.Expenditure" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Expenditure].[FeeID] AS [FeeID], 
+    [Expenditure].[SalaryID] AS [SalaryID], 
+    [Expenditure].[ExpenditureID] AS [ExpenditureID]
+    FROM [dbo].[Expenditure] AS [Expenditure]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="StudentAttendance" EntityType="Self.StudentAttendance" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [StudentAttendance].[AttendanceID] AS [AttendanceID], 
+    [StudentAttendance].[StudentID] AS [StudentID]
+    FROM [dbo].[StudentAttendance] AS [StudentAttendance]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="StudentResult" EntityType="Self.StudentResult" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [StudentResult].[StudentID] AS [StudentID], 
+    [StudentResult].[ResultID] AS [ResultID], 
+    [StudentResult].[GPA] AS [GPA], 
+    [StudentResult].[Date] AS [Date]
+    FROM [dbo].[StudentResult] AS [StudentResult]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TimeTable" EntityType="Self.TimeTable" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TimeTable].[CoursesID] AS [CoursesID], 
+    [TimeTable].[Time] AS [Time], 
+    [TimeTable].[SectionID] AS [SectionID], 
+    [TimeTable].[EmployeeID] AS [EmployeeID]
+    FROM [dbo].[TimeTable] AS [TimeTable]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_ClassAttendance_Section" Association="Self.FK_ClassAttendance_Section">
+      <End Role="Section" EntitySet="Section" />
+      <End Role="ClassAttendance" EntitySet="ClassAttendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_Department" Association="Self.FK_Course_Department">
+      <End Role="Session" EntitySet="Session" />
+      <End Role="Course" EntitySet="Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_Session" Association="Self.FK_Course_Session">
+      <End Role="Session" EntitySet="Session" />
+      <End Role="Course" EntitySet="Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Login" Association="Self.FK_Employee_Login">
+      <End Role="Login" EntitySet="Login" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Exam_Exam" Association="Self.FK_Exam_Exam">
+      <End Role="Session" EntitySet="Session" />
+      <End Role="Exam" EntitySet="Exam" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Expenditure_Fe" Association="Self.FK_Expenditure_Fe">
+      <End Role="Fe" EntitySet="Fe" />
+      <End Role="Expenditure" EntitySet="Expenditure" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Expenditure_SalaryID" Association="Self.FK_Expenditure_SalaryID">
+      <End Role="Salary" EntitySet="Salary" />
+      <End Role="Expenditure" EntitySet="Expenditure" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fe_Scholarship" Association="Self.FK_Fe_Scholarship">
+      <End Role="Scholarship" EntitySet="Scholarship" />
+      <End Role="Fe" EntitySet="Fe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fe_Student" Association="Self.FK_Fe_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Fe" EntitySet="Fe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegisyeredCourses_Course" Association="Self.FK_RegisyeredCourses_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="RegisteredCourses" EntitySet="RegisteredCourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegisyeredCourses_Student" Association="Self.FK_RegisyeredCourses_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="RegisteredCourses" EntitySet="RegisteredCourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Result_RegisteredCourses" Association="Self.FK_Result_RegisteredCourses">
+      <End Role="RegisteredCourses" EntitySet="RegisteredCourses" />
+      <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Result_SectionID" Association="Self.FK_Result_SectionID">
+      <End Role="Section" EntitySet="Section" />
+      <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Result_Session" Association="Self.FK_Result_Session">
+      <End Role="Session" EntitySet="Session" />
+      <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Salary_Employee" Association="Self.FK_Salary_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Salary" EntitySet="Salary" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Scholarship_Student" Association="Self.FK_Scholarship_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Scholarship" EntitySet="Scholarship" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Section_Department" Association="Self.FK_Section_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Section" EntitySet="Section" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Section_Employee" Association="Self.FK_Section_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Section" EntitySet="Section" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Section_Session" Association="Self.FK_Section_Session">
+      <End Role="Session" EntitySet="Session" />
+      <End Role="Section" EntitySet="Section" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Department" Association="Self.FK_Student_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Login" Association="Self.FK_Student_Login">
+      <End Role="Login" EntitySet="Login" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Session" Association="Self.FK_Student_Session">
+      <End Role="Session" EntitySet="Session" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentAttendance_ClassAttendance" Association="Self.FK_StudentAttendance_ClassAttendance">
+      <End Role="ClassAttendance" EntitySet="ClassAttendance" />
+      <End Role="StudentAttendance" EntitySet="StudentAttendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentAttendance_Student" Association="Self.FK_StudentAttendance_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="StudentAttendance" EntitySet="StudentAttendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentResult_Result" Association="Self.FK_StudentResult_Result">
+      <End Role="Result" EntitySet="Result" />
+      <End Role="StudentResult" EntitySet="StudentResult" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentResult_Student" Association="Self.FK_StudentResult_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="StudentResult" EntitySet="StudentResult" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TimeTable_Course" Association="Self.FK_TimeTable_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="TimeTable" EntitySet="TimeTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TimeTable_Employee" Association="Self.FK_TimeTable_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="TimeTable" EntitySet="TimeTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TimeTable_Section" Association="Self.FK_TimeTable_Section">
+      <End Role="Section" EntitySet="Section" />
+      <End Role="TimeTable" EntitySet="TimeTable" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
