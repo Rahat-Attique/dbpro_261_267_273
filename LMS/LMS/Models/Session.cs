@@ -26,7 +26,7 @@ namespace LMS.Models
         }
     
         public int SessionID { get; set; }
-        public Nullable<int> Session1 { get; set; }
+        public string Session1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Course> Courses { get; set; }

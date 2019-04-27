@@ -10,10 +10,14 @@
 namespace LMS.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class sp_helpdiagramdefinition_Result
+    public partial class EmployeeAttendance
     {
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int EmpAttendanceId { get; set; }
+        public System.DateTime Date { get; set; }
+        public int EmployeeID { get; set; }
+    
+        public virtual Employee Employee { get; set; }
     }
 }

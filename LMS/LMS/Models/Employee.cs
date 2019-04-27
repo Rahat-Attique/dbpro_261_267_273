@@ -17,6 +17,7 @@ namespace LMS.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employee()
         {
+            this.EmployeeAttendances = new HashSet<EmployeeAttendance>();
             this.Salaries = new HashSet<Salary>();
             this.Sections = new HashSet<Section>();
             this.TimeTables = new HashSet<TimeTable>();
@@ -31,10 +32,12 @@ namespace LMS.Models
         public string ContactNumber { get; set; }
         public string EmailID { get; set; }
         public int MonthlySalary { get; set; }
-        public System.DateTime DOB { get; set; }
         public int LoginID { get; set; }
+        public string Password { get; set; }
     
         public virtual Login Login { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeAttendance> EmployeeAttendances { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Salary> Salaries { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -23,6 +23,7 @@ namespace LMS.Models
         public int AttendanceID { get; set; }
         public int SectionID { get; set; }
         public System.DateTime Date { get; set; }
+        public string Status { get; set; }
     
         public virtual Section Section { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using LMS.Models;
+using System.Net;
 
 namespace LMS.Controllers
 {
@@ -17,7 +18,56 @@ namespace LMS.Controllers
         }
         public ActionResult Courses()
         {
+            DB49Entities2 db = new DB49Entities2();
+            List<Department> departments = db.Departments.ToList();
+            ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
+
+            List<Session> sessions = db.Sessions.ToList();
+            ViewBag.SessionList = new SelectList(sessions, "SessionID", "Session1");
             return View();
+        }
+        [HttpPost]
+        public ActionResult Courses(Course obj)
+        {
+            try
+            {
+                string message;
+                DB49Entities2 db = new DB49Entities2();
+                List<Department> departments = db.Departments.ToList();
+                ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
+
+                List<Session> sessions = db.Sessions.ToList();
+                ViewBag.SessionList = new SelectList(sessions, "SessionID", "Session1");
+                // Student l = new Student();
+                Course c = new Course();
+                Department s = new Department();
+                Session n = new Session();
+                //c.StatusID = 1;
+                // s.Date = DateTime.Now;
+                db.Sessions.Add(n);
+                db.Departments.Add(s);
+                db.SaveChanges();
+                c.CourseName = obj.CourseName;
+                c.DepartmentID = obj.DepartmentID;
+                c.SessionID = obj.SessionID;
+                c.CreditHours = obj.CreditHours;
+
+
+                db.Courses.Add(c);
+                db.SaveChanges();
+                Session[" CourseID"] = c.CourseID.ToString();
+                message = " Course Added Successfully.\\nCourse Id:" + c.CourseID.ToString();
+                ViewBag.Message = message;
+            }
+
+            catch (DbEntityValidationException e)
+            {
+
+
+                Console.WriteLine(e.ToString());
+
+            }
+            return View(obj);
         }
         public ActionResult Exam()
         {
@@ -37,15 +87,80 @@ namespace LMS.Controllers
         }
         public ActionResult ShowCourses()
         {
-            return View();
+            DB49Entities2 db = new DB49Entities2();
+            List<Course> p = new List<Course>();
+            Course o = new Course();
+            p = db.Courses.ToList();
+            return View(p);
+           
         }
+
+
+        [HttpGet]
+        public ActionResult EditCourse(int id)
+        {
+            using (DB49Entities2 db = new DB49Entities2())
+            {
+                List<Department> departments = db.Departments.ToList();
+                ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
+
+                List<Session> sessions = db.Sessions.ToList();
+                ViewBag.SessionList = new SelectList(sessions, "SessionID", "Session1");
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+                }
+                Course user = db.Courses.Find(id);
+                if (user == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(user);
+            }
+        }
+
+        [HttpPost, ActionName("EditCourse")]
+        public ActionResult EditCourse(Course obj, int id)
+        {
+
+            using (DB49Entities2 db = new DB49Entities2())
+            {
+                List<Department> departments = db.Departments.ToList();
+                ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
+
+                List<Session> sessions = db.Sessions.ToList();
+                ViewBag.SessionList = new SelectList(sessions, "SessionID", "Session1");
+                Course user = db.Courses.Where(a => a.CourseID == id).FirstOrDefault();
+                user.CourseName = obj.CourseName;
+                user.DepartmentID = obj.DepartmentID;
+                user.SessionID = obj.SessionID;
+                user.CreditHours = obj.CreditHours;
+
+
+                //  k.Complain.StatusID = obj.StatusID;
+
+
+
+                //db.Comments.Add(k);
+                db.SaveChanges();
+
+
+
+
+
+            }
+            return View(obj);
+        }
+
+
         public ActionResult ShowExam()
         {
             return View();
         }
         public ActionResult RegisterStudent()
         {
-            DB49Entities1 k = new DB49Entities1();
+            DB49Entities2 k = new DB49Entities2();
            
             List<Department> departments = k.Departments.ToList();
             ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName ");
@@ -61,7 +176,7 @@ namespace LMS.Controllers
 
             try
             {
-                DB49Entities1 db = new DB49Entities1();
+                DB49Entities2 db = new DB49Entities2();
 
                 List<Department> list = db.Departments.ToList();
                 ViewBag.DepartmentList = new SelectList(list, "DepartmentID", "DepartmentName");
@@ -124,7 +239,7 @@ namespace LMS.Controllers
 
                         db.Students.Add(k);
                         db.SaveChanges();
-                        message = "Registration successful.\\nUser Id: " + site.LoginID.ToString();
+                       message = "Registration successful.\\nUser Id: " + site.LoginID.ToString();
                         //    return RedirectToAction("Login");
 
                         ////  int lateststuID = k.StudentID;
@@ -157,16 +272,16 @@ namespace LMS.Controllers
             {
                 return RedirectToAction("Result", "Admin");
             }
-           
+
             else
             {
-                using (DB49Entities1 db = new DB49Entities1())
+                using (DB49Entities2 db = new DB49Entities2())
                 {
                     var s = Login.GetCBLoginInfo(model.UserName, model.Password);
 
                     var item = s.FirstOrDefault();
                     // var j = db.Logins.Where(x => x.Email == l.Email && x.Password == l.Password);// (from Login in db.Logins where Login.Email == l.Email && Login.Password == l.Password select Login.Type);
-                    var v =j.FirstOrDefault();
+                    ///var v =j.FirstOrDefault();
 
                     //var v = db.Logins.Where(x => x.Email == l.Email && x.Password == l.Password).FirstOrDefault();
                     if (v != null)
@@ -202,6 +317,7 @@ namespace LMS.Controllers
 
                         }
                     }
+
                     else
                     {
                         return RedirectToAction("Result", "Admin");
