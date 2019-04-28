@@ -157,12 +157,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminLoginController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\EmpRegisterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegisteredCoursesController.cs" />
     <Compile Include="Controllers\ShowRegisteredCoursesController.cs" />
     <Compile Include="Controllers\ShowStuAttendenceController.cs" />
     <Compile Include="Controllers\ShowStuInfoController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\StuRegisterController.cs" />
     <Compile Include="Controllers\StuReportsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -405,6 +407,20 @@
     <Content Include="Views\Admin\RegisterStudent.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Admin\EditCourse.cshtml" />
+    <Content Include="Views\Student\StudentDetalis.cshtml" />
+    <Content Include="Views\Student\RegisterCourses.cshtml" />
+    <Content Include="Views\Student\RegisterACourses.cshtml" />
+    <Content Include="Views\Student\Scholarship.cshtml" />
+    <Content Include="Views\Student\ViewDmc.cshtml" />
+    <Content Include="Views\Student\Feechallan.cshtml" />
+    <Content Include="Views\Student\Attendance.cshtml" />
+    <Content Include="Views\Student\Reports.cshtml" />
+    <Content Include="Views\Employee\Reports.cshtml" />
+    <Content Include="Views\Employee\MarkStudnetAttendance.cshtml" />
+    <Content Include="Views\Employee\EmployeeDetails.cshtml" />
+    <Content Include="Views\Admin\AddScholarship.cshtml" />
+    <Content Include="Views\Admin\ShowStudnet.cshtml" />
+    <Content Include="Views\Admin\ShowEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -18,12 +18,12 @@ namespace LMS.Controllers
         }
         public ActionResult Courses()
         {
-            DB49Entities4 db = new DB49Entities4();
-            List<Department> departments = db.Departments.ToList();
-            ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
+            //DB49Entities4 db = new DB49Entities4();
+            //List<Department> departments = db.Departments.ToList();
+            //ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
 
-            List<Session> sessions = db.Sessions.ToList();
-            ViewBag.SessionList = new SelectList(sessions, "SessionID", "Session1");
+            //List<Session> sessions = db.Sessions.ToList();
+            //ViewBag.SessionList = new SelectList(sessions, "SessionID", "Session1");
             return View();
         }
         [HttpPost]
@@ -320,69 +320,78 @@ namespace LMS.Controllers
         {
             return View();
         }
-        //[HttpPost]
-        //public ActionResult Login(Login l)
+        [HttpPost]
+        public ActionResult Login(Login l)
 
-        //{
-        //    if (l.Email == "Admin" && l.Password == "A123")
-        //    {
-        //        return RedirectToAction("Result", "Admin");
-        //    }
+        {
+            if (l.Email == "Admin" && l.Password == "A123")
+            {
+                return RedirectToAction("Result", "Admin");
+            }
 
-        //    else
-        //    {
-        //        using (DB49Entities db = new DB49Entities1())
-        //        {
-        //            var s = Login.GetCBLoginInfo(model.UserName, model.Password);
+            else
+            {
+                using (DB49Entities4 db = new DB49Entities4())
+                {
+                   
+                     var j = db.Logins.Where(x => x.Email == l.Email && x.Password == l.Password);// (from Login in db.Logins where Login.Email == l.Email && Login.Password == l.Password select Login.Type);
+                    var v = j.FirstOrDefault();
 
-        //            var item = s.FirstOrDefault();
-        //            // var j = db.Logins.Where(x => x.Email == l.Email && x.Password == l.Password);// (from Login in db.Logins where Login.Email == l.Email && Login.Password == l.Password select Login.Type);
-        //            var v = j.FirstOrDefault();
+                    //var v = db.Logins.Where(x => x.Email == l.Email && x.Password == l.Password).FirstOrDefault();
+                    if (v != null)
 
-        //            //var v = db.Logins.Where(x => x.Email == l.Email && x.Password == l.Password).FirstOrDefault();
-        //            if (v != null)
+                    {
 
-        //            {
-
-        //                var k = db.Students.Where(d => d.Login.Type == l.Type && d.EmailId == l.Email).FirstOrDefault();
+                        var k = db.Students.Where(d => d.Login.Type == l.Type && d.EmailId == l.Email).FirstOrDefault();
 
 
-        //                if (k != null)
-        //                {
+                        if (k != null)
+                        {
 
-        //                    //Session["LoginID"] = k.LoginID.ToString();
-        //                    //Session["Name"] = k.Name.ToString();
-        //                    //Session["StudentID"] = k.StudentId.ToString();
-        //                    //Session["RegistrationNumber"] = k.RegistrationNumber.ToString();
-        //                    //Session["PhoneNumber"] = k.PhoneNumber.ToString();
-        //                    //Session["Session"] = k.Session.ToString();
-        //                    //Session["Address"] = k.Address.ToString();
-        //                    //Session["DOB"] = k.DOB.ToString();
-        //                    //Session["Department"] = k.Department.DepartmentID.ToString();
-        //                    return RedirectToAction("Exam", "Admin");
-        //                }
-        //                else if (k == null)
-        //                {
-        //                    return RedirectToAction("Result", "Admin");
-        //                }
-        //                else
-        //                {
-        //                    string message;
-        //                    message = ("Invalid Login Attempt");
-        //                    ViewBag.Message = message;
+                            //Session["LoginID"] = k.LoginID.ToString();
+                            //Session["Name"] = k.Name.ToString();
+                            //Session["StudentID"] = k.StudentId.ToString();
+                            //Session["RegistrationNumber"] = k.RegistrationNumber.ToString();
+                            //Session["PhoneNumber"] = k.PhoneNumber.ToString();
+                            //Session["Session"] = k.Session.ToString();
+                            //Session["Address"] = k.Address.ToString();
+                            //Session["DOB"] = k.DOB.ToString();
+                            //Session["Department"] = k.Department.DepartmentID.ToString();
+                            return RedirectToAction("Exam", "Admin");
+                        }
+                        else if (k == null)
+                        {
+                            return RedirectToAction("Result", "Admin");
+                        }
+                        else
+                        {
+                            string message;
+                            message = ("Invalid Login Attempt");
+                            ViewBag.Message = message;
 
-        //                }
-        //            }
-        //            else
-        //            {
-        //                return RedirectToAction("Result", "Admin");
-        //            }
+                        }
+                    }
+                    else
+                    {
+                        return RedirectToAction("Result", "Admin");
+                    }
 
-        //        }
-        //    }
-        //    return View(l);
-        //}
-
+                }
+            }
+            return View(l);
+        }
+        public ActionResult AddScholarship()
+        {
+            return View();
+        }
+        public ActionResult ShowStudnet()
+        {
+            return View();
+        }
+        public ActionResult ShowEmployee()
+        {
+            return View();
+        }
 
 
 
