@@ -21,10 +21,10 @@ namespace LMS.Models
             this.Students = new HashSet<Student>();
         }
     
-        public int LoginId { get; set; }
+        public int LoginID { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; }
         public string Type { get; set; }
+        public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }

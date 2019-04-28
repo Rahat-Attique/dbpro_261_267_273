@@ -16,8 +16,10 @@ namespace LMS.Models
     {
         public int ExamID { get; set; }
         public System.DateTime ExamDate { get; set; }
+        public int CourseID { get; set; }
         public int SessionID { get; set; }
     
+        public virtual Course Course { get; set; }
         public virtual Session Session { get; set; }
     }
 }

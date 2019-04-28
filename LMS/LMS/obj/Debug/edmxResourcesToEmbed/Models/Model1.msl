@@ -1,13 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DB49ModelStoreContainer" CdmEntityContainer="DB49Entities2">
+  <EntityContainerMapping StorageEntityContainer="DB49ModelStoreContainer" CdmEntityContainer="DB49Entities4">
     <EntitySetMapping Name="ClassAttendances">
       <EntityTypeMapping TypeName="DB49Model.ClassAttendance">
         <MappingFragment StoreEntitySet="ClassAttendance">
           <ScalarProperty Name="AttendanceID" ColumnName="AttendanceID" />
           <ScalarProperty Name="SectionID" ColumnName="SectionID" />
           <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -42,17 +41,8 @@
           <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
           <ScalarProperty Name="EmailID" ColumnName="EmailID" />
           <ScalarProperty Name="MonthlySalary" ColumnName="MonthlySalary" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
           <ScalarProperty Name="LoginID" ColumnName="LoginID" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="EmployeeAttendances">
-      <EntityTypeMapping TypeName="DB49Model.EmployeeAttendance">
-        <MappingFragment StoreEntitySet="EmployeeAttendance">
-          <ScalarProperty Name="EmpAttendanceId" ColumnName="EmpAttendanceId" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -61,6 +51,7 @@
         <MappingFragment StoreEntitySet="Exam">
           <ScalarProperty Name="ExamID" ColumnName="ExamID" />
           <ScalarProperty Name="ExamDate" ColumnName="ExamDate" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
           <ScalarProperty Name="SessionID" ColumnName="SessionID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -78,10 +69,10 @@
     <EntitySetMapping Name="Logins">
       <EntityTypeMapping TypeName="DB49Model.Login">
         <MappingFragment StoreEntitySet="Login">
-          <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+          <ScalarProperty Name="LoginID" ColumnName="LoginID" />
           <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -99,7 +90,6 @@
         <MappingFragment StoreEntitySet="Result">
           <ScalarProperty Name="ResultID" ColumnName="ResultID" />
           <ScalarProperty Name="SectionID" ColumnName="SectionID" />
-          <ScalarProperty Name="CGPA" ColumnName="CGPA" />
           <ScalarProperty Name="Grade" ColumnName="Grade" />
           <ScalarProperty Name="CreditHours" ColumnName="CreditHours" />
           <ScalarProperty Name="SessionId" ColumnName="SessionId" />
@@ -159,20 +149,9 @@
           <ScalarProperty Name="CNIC" ColumnName="CNIC" />
           <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
           <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
           <ScalarProperty Name="LoginID" ColumnName="LoginID" />
-          <ScalarProperty Name="Batch" ColumnName="Batch" />
           <ScalarProperty Name="Password" ColumnName="Password" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="DB49Model.sysdiagram">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

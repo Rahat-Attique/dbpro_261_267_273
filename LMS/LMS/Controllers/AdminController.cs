@@ -18,7 +18,7 @@ namespace LMS.Controllers
         }
         public ActionResult Courses()
         {
-            DB49Entities2 db = new DB49Entities2();
+            DB49Entities4 db = new DB49Entities4();
             List<Department> departments = db.Departments.ToList();
             ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
 
@@ -32,7 +32,7 @@ namespace LMS.Controllers
             try
             {
                 string message;
-                DB49Entities2 db = new DB49Entities2();
+                DB49Entities4 db = new DB49Entities4();
                 List<Department> departments = db.Departments.ToList();
                 ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
 
@@ -69,9 +69,68 @@ namespace LMS.Controllers
             }
             return View(obj);
         }
+
         public ActionResult Exam()
         {
+            DB49Entities4 db = new DB49Entities4();
+            List<Course> co = db.Courses.ToList();
+            ViewBag.courseList = new SelectList(co, "CourseID", "CourseName");
+
+            List<Session> sessions = db.Sessions.ToList();
+            ViewBag.SessionList = new SelectList(sessions, "SessionID", "Session1");
             return View();
+
+
+
+
+
+        }
+        [HttpPost]
+        public ActionResult Exam(Exam obj)
+        {
+            try
+            {
+                string message;
+                DB49Entities4 r = new DB49Entities4();
+                List<Course> co = r.Courses.ToList();
+                ViewBag.courseList = new SelectList(co, "CourseID", "CourseName");
+
+                List<Session> sessions = r.Sessions.ToList();
+                ViewBag.SessionList = new SelectList(sessions, "SessionID", "Session1");
+
+             
+                Exam ex = new Exam();
+                Course c = new Course();
+              
+                Session n = new Session();
+                
+                r.Sessions.Add(n);
+                r.Courses.Add(c);
+                r.SaveChanges();
+
+                ex.ExamDate = obj.ExamDate;
+                ex.CourseID = obj.CourseID;
+                ex.SessionID = obj.SessionID;
+
+                r.Exams.Add(ex);
+                r.SaveChanges();
+
+
+                Session[" ExamID"] = ex.ExamID.ToString();
+                message = " Course Added Successfully.\\nExam Id:" + ex.ExamID.ToString();
+                ViewBag.Message = message;
+            }
+
+            catch (DbEntityValidationException e)
+            {
+
+
+                Console.WriteLine(e.ToString());
+
+            }
+            return View(obj);
+
+
         }
         public ActionResult Result()
         {
@@ -87,7 +146,7 @@ namespace LMS.Controllers
         }
         public ActionResult ShowCourses()
         {
-            DB49Entities2 db = new DB49Entities2();
+            DB49Entities4 db = new DB49Entities4();
             List<Course> p = new List<Course>();
             Course o = new Course();
             p = db.Courses.ToList();
@@ -99,7 +158,7 @@ namespace LMS.Controllers
         [HttpGet]
         public ActionResult EditCourse(int id)
         {
-            using (DB49Entities2 db = new DB49Entities2())
+            using (DB49Entities4 db = new DB49Entities4())
             {
                 List<Department> departments = db.Departments.ToList();
                 ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
@@ -109,7 +168,7 @@ namespace LMS.Controllers
                 if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
+                    
                 }
                 Course user = db.Courses.Find(id);
                 if (user == null)
@@ -124,7 +183,7 @@ namespace LMS.Controllers
         public ActionResult EditCourse(Course obj, int id)
         {
 
-            using (DB49Entities2 db = new DB49Entities2())
+            using (DB49Entities4 db = new DB49Entities4())
             {
                 List<Department> departments = db.Departments.ToList();
                 ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
@@ -146,9 +205,6 @@ namespace LMS.Controllers
                 db.SaveChanges();
 
 
-
-
-
             }
             return View(obj);
         }
@@ -160,7 +216,7 @@ namespace LMS.Controllers
         }
         public ActionResult RegisterStudent()
         {
-            DB49Entities2 k = new DB49Entities2();
+            DB49Entities4 k = new DB49Entities4();
            
             List<Department> departments = k.Departments.ToList();
             ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName ");
@@ -176,7 +232,7 @@ namespace LMS.Controllers
 
             try
             {
-                DB49Entities2 db = new DB49Entities2();
+                DB49Entities4 db = new DB49Entities4();
 
                 List<Department> list = db.Departments.ToList();
                 ViewBag.DepartmentList = new SelectList(list, "DepartmentID", "DepartmentName");
@@ -264,69 +320,71 @@ namespace LMS.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult Login(Login l)
+        //[HttpPost]
+        //public ActionResult Login(Login l)
 
-        {
-            if (l.Email == "Admin" && l.Password == "A123")
-            {
-                return RedirectToAction("Result", "Admin");
-            }
+        //{
+        //    if (l.Email == "Admin" && l.Password == "A123")
+        //    {
+        //        return RedirectToAction("Result", "Admin");
+        //    }
 
-            else
-            {
-                using (DB49Entities2 db = new DB49Entities2())
-                {
-                    var s = Login.GetCBLoginInfo(model.UserName, model.Password);
+        //    else
+        //    {
+        //        using (DB49Entities db = new DB49Entities1())
+        //        {
+        //            var s = Login.GetCBLoginInfo(model.UserName, model.Password);
 
-                    var item = s.FirstOrDefault();
-                    // var j = db.Logins.Where(x => x.Email == l.Email && x.Password == l.Password);// (from Login in db.Logins where Login.Email == l.Email && Login.Password == l.Password select Login.Type);
-                    ///var v =j.FirstOrDefault();
+        //            var item = s.FirstOrDefault();
+        //            // var j = db.Logins.Where(x => x.Email == l.Email && x.Password == l.Password);// (from Login in db.Logins where Login.Email == l.Email && Login.Password == l.Password select Login.Type);
+        //            var v = j.FirstOrDefault();
 
-                    //var v = db.Logins.Where(x => x.Email == l.Email && x.Password == l.Password).FirstOrDefault();
-                    if (v != null)
+        //            //var v = db.Logins.Where(x => x.Email == l.Email && x.Password == l.Password).FirstOrDefault();
+        //            if (v != null)
 
-                    {
+        //            {
 
-                        var k = db.Students.Where(d => d.Login.Type == l.Type && d.EmailId == l.Email).FirstOrDefault();
+        //                var k = db.Students.Where(d => d.Login.Type == l.Type && d.EmailId == l.Email).FirstOrDefault();
 
 
-                        if (k != null)
-                        {
+        //                if (k != null)
+        //                {
 
-                            //Session["LoginID"] = k.LoginID.ToString();
-                            //Session["Name"] = k.Name.ToString();
-                            //Session["StudentID"] = k.StudentId.ToString();
-                            //Session["RegistrationNumber"] = k.RegistrationNumber.ToString();
-                            //Session["PhoneNumber"] = k.PhoneNumber.ToString();
-                            //Session["Session"] = k.Session.ToString();
-                            //Session["Address"] = k.Address.ToString();
-                            //Session["DOB"] = k.DOB.ToString();
-                            //Session["Department"] = k.Department.DepartmentID.ToString();
-                            return RedirectToAction("Exam", "Admin");
-                        }
-                        else if (k == null)
-                        {
-                            return RedirectToAction("Result", "Admin");
-                        }
-                        else
-                        {
-                            string message;
-                            message = ("Invalid Login Attempt");
-                            ViewBag.Message = message;
+        //                    //Session["LoginID"] = k.LoginID.ToString();
+        //                    //Session["Name"] = k.Name.ToString();
+        //                    //Session["StudentID"] = k.StudentId.ToString();
+        //                    //Session["RegistrationNumber"] = k.RegistrationNumber.ToString();
+        //                    //Session["PhoneNumber"] = k.PhoneNumber.ToString();
+        //                    //Session["Session"] = k.Session.ToString();
+        //                    //Session["Address"] = k.Address.ToString();
+        //                    //Session["DOB"] = k.DOB.ToString();
+        //                    //Session["Department"] = k.Department.DepartmentID.ToString();
+        //                    return RedirectToAction("Exam", "Admin");
+        //                }
+        //                else if (k == null)
+        //                {
+        //                    return RedirectToAction("Result", "Admin");
+        //                }
+        //                else
+        //                {
+        //                    string message;
+        //                    message = ("Invalid Login Attempt");
+        //                    ViewBag.Message = message;
 
-                        }
-                    }
+        //                }
+        //            }
+        //            else
+        //            {
+        //                return RedirectToAction("Result", "Admin");
+        //            }
 
-                    else
-                    {
-                        return RedirectToAction("Result", "Admin");
-                    }
+        //        }
+        //    }
+        //    return View(l);
+        //}
 
-                }
-            }
-            return View(l);
-        }
+
+
 
     }
 }

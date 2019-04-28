@@ -34,8 +34,8 @@ namespace LMS.Models
         public string CNIC { get; set; }
         public int DepartmentID { get; set; }
         public int SessionId { get; set; }
+        public System.DateTime DOB { get; set; }
         public int LoginID { get; set; }
-        public string Batch { get; set; }
         public string Password { get; set; }
     
         public virtual Department Department { get; set; }

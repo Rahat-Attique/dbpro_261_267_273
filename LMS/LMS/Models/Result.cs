@@ -22,7 +22,6 @@ namespace LMS.Models
     
         public int ResultID { get; set; }
         public Nullable<int> SectionID { get; set; }
-        public Nullable<double> CGPA { get; set; }
         public string Grade { get; set; }
         public string CreditHours { get; set; }
         public Nullable<int> SessionId { get; set; }
