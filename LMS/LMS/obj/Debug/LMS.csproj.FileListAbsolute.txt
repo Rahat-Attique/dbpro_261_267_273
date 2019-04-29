@@ -377,3 +377,4 @@ C:\Users\rafia\Desktop\dbpro_261_267_273\LMS\LMS\bin\Microsoft.AI.WindowsServer.
 C:\Users\rafia\Desktop\dbpro_261_267_273\LMS\LMS\bin\Microsoft.AI.Web.xml
 C:\Users\rafia\Desktop\dbpro_261_267_273\LMS\LMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\rafia\Desktop\dbpro_261_267_273\LMS\LMS\obj\Debug\LMS.csproj.CopyComplete
+C:\Users\rafia\Desktop\dbpro_261_267_273\LMS\LMS\obj\Debug\LMS.csprojAssemblyReference.cache

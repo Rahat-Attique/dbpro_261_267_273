@@ -13,10 +13,10 @@ namespace LMS.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DB49Entities4 : DbContext
+    public partial class DB49Entities : DbContext
     {
-        public DB49Entities4()
-            : base("name=DB49Entities4")
+        public DB49Entities()
+            : base("name=DB49Entities")
         {
         }
     

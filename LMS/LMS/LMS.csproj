@@ -431,6 +431,7 @@
     <Content Include="Views\Admin\AddScholarship.cshtml" />
     <Content Include="Views\Admin\ShowStudnet.cshtml" />
     <Content Include="Views\Admin\ShowEmployee.cshtml" />
+    <Content Include="Views\Admin\AddFee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -18,7 +18,7 @@ namespace LMS.Controllers
         }
         public ActionResult Courses()
         {
-            DB49Entities4 db = new DB49Entities4();
+            DB49Entities db = new DB49Entities();
             List<Department> departments = db.Departments.ToList();
             ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
 
@@ -32,7 +32,7 @@ namespace LMS.Controllers
             try
             {
                 string message;
-                DB49Entities4 db = new DB49Entities4();
+                DB49Entities db = new DB49Entities();
                 List<Department> departments = db.Departments.ToList();
                 ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
 
@@ -71,9 +71,12 @@ namespace LMS.Controllers
             return View(obj);
         }
 
+       
+
+
         public ActionResult Exam()
         {
-            DB49Entities4 db = new DB49Entities4();
+            DB49Entities db = new DB49Entities();
             List<Course> co = db.Courses.ToList();
             ViewBag.courseList = new SelectList(co, "CourseID", "CourseName");
 
@@ -96,7 +99,7 @@ namespace LMS.Controllers
             try
             {
                 string message;
-                DB49Entities4 r = new DB49Entities4();
+                DB49Entities r = new DB49Entities();
                 List<Course> co = r.Courses.ToList();
                 ViewBag.courseList = new SelectList(co, "CourseID", "CourseName");
 
@@ -153,7 +156,7 @@ namespace LMS.Controllers
         }
         public ActionResult ShowCourses()
         {
-            DB49Entities4 db = new DB49Entities4();
+            DB49Entities db = new DB49Entities();
             List<Course> p = new List<Course>();
             Course o = new Course();
             p = db.Courses.ToList();
@@ -165,7 +168,7 @@ namespace LMS.Controllers
         [HttpGet]
         public ActionResult EditCourse(int id)
         {
-            using (DB49Entities4 db = new DB49Entities4())
+            using (DB49Entities db = new DB49Entities())
             {
                 List<Department> departments = db.Departments.ToList();
                 ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
@@ -190,7 +193,7 @@ namespace LMS.Controllers
         public ActionResult EditCourse(Course obj, int id)
         {
 
-            using (DB49Entities4 db = new DB49Entities4())
+            using (DB49Entities db = new DB49Entities())
             {
                 List<Department> departments = db.Departments.ToList();
                 ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
@@ -223,7 +226,7 @@ namespace LMS.Controllers
         }
         public ActionResult RegisterStudent()
         {
-            DB49Entities4 k = new DB49Entities4();
+            DB49Entities k = new DB49Entities();
            
             List<Department> departments = k.Departments.ToList();
             ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName ");
@@ -239,7 +242,7 @@ namespace LMS.Controllers
 
             try
             {
-                DB49Entities4 db = new DB49Entities4();
+                DB49Entities db = new DB49Entities();
 
                 List<Department> list = db.Departments.ToList();
                 ViewBag.DepartmentList = new SelectList(list, "DepartmentID", "DepartmentName");
@@ -338,7 +341,7 @@ namespace LMS.Controllers
 
             else
             {
-                using (DB49Entities4 db = new DB49Entities4())
+                using (DB49Entities db = new DB49Entities())
                 {
                    
                      var j = db.Logins.Where(x => x.Email == l.Email && x.Password == l.Password);// (from Login in db.Logins where Login.Email == l.Email && Login.Password == l.Password select Login.Type);
@@ -387,7 +390,48 @@ namespace LMS.Controllers
             }
             return View(l);
         }
-        public ActionResult AddScholarship()
+
+
+        public ActionResult AddFee()
+        {
+            DB49Entities db = new DB49Entities();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddFee(Fee obj)
+        {
+            try { 
+            string message;
+            DB49Entities db = new DB49Entities();
+
+            // Student l = new Student();
+            Fee c = new Fee();
+
+
+            c.Fees = obj.Fees;
+            c.Semester = obj.Semester;
+
+
+            db.Fees.Add(c);
+            db.SaveChanges();
+            // Session[" CourseID"] = c.CourseID.ToString();
+            message = " Fee Added Successfully.\\nCourse Id:" + c.FeeId.ToString();
+            ViewBag.Message = message;
+        }
+
+            catch (DbEntityValidationException e)
+            {
+
+
+                Console.WriteLine(e.ToString());
+
+            }
+            return View(obj);
+}
+
+
+public ActionResult AddScholarship()
         {
             return View();
         }
@@ -404,4 +448,5 @@ namespace LMS.Controllers
 
     }
 }
+
     
