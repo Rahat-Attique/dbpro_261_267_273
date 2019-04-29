@@ -14,28 +14,14 @@ namespace LMS.Models
     
     public partial class Section
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Section()
-        {
-            this.ClassAttendances = new HashSet<ClassAttendance>();
-            this.Results = new HashSet<Result>();
-            this.TimeTables = new HashSet<TimeTable>();
-        }
-    
         public int SectionID { get; set; }
-        public string SectionName { get; set; }
+        public Nullable<int> StudentID { get; set; }
         public int DepartmentID { get; set; }
         public int SessionID { get; set; }
-        public int EmployeeID { get; set; }
+        public Nullable<int> EmployeeID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ClassAttendance> ClassAttendances { get; set; }
-        public virtual Department Department { get; set; }
-        public virtual Employee Employee { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Result> Results { get; set; }
+        public virtual Sectionss Sectionss { get; set; }
         public virtual Session Session { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TimeTable> TimeTables { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

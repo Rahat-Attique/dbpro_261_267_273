@@ -157,14 +157,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminLoginController.cs" />
-    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\EmpRegisterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegisteredCoursesController.cs" />
     <Compile Include="Controllers\ShowRegisteredCoursesController.cs" />
     <Compile Include="Controllers\ShowStuAttendenceController.cs" />
     <Compile Include="Controllers\ShowStuInfoController.cs" />
-    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\StuRegisterController.cs" />
     <Compile Include="Controllers\StuReportsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -191,7 +189,13 @@
     <Compile Include="Models\Fe.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Fee.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Login.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Lookup.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
@@ -221,7 +225,13 @@
     <Compile Include="Models\Scholarship.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Scholarshipss.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Section.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sectionss.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Session.cs">

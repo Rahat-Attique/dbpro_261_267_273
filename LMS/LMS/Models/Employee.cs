@@ -18,7 +18,6 @@ namespace LMS.Models
         public Employee()
         {
             this.Salaries = new HashSet<Salary>();
-            this.Sections = new HashSet<Section>();
             this.TimeTables = new HashSet<TimeTable>();
         }
     
@@ -37,8 +36,6 @@ namespace LMS.Models
         public virtual Login Login { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Salary> Salaries { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Section> Sections { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TimeTable> TimeTables { get; set; }
     }

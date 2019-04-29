@@ -18,7 +18,6 @@ namespace LMS.Models
         public int SalaryID { get; set; }
         public int ExpenditureID { get; set; }
     
-        public virtual Fe Fe { get; set; }
         public virtual Salary Salary { get; set; }
     }
 }

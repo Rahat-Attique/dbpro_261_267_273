@@ -30,16 +30,20 @@ namespace LMS.Models
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Exam> Exams { get; set; }
-        public virtual DbSet<Fe> Fes { get; set; }
+        public virtual DbSet<Fee> Fees { get; set; }
         public virtual DbSet<Login> Logins { get; set; }
+        public virtual DbSet<Lookup> Lookups { get; set; }
         public virtual DbSet<RegisteredCours> RegisteredCourses { get; set; }
         public virtual DbSet<Result> Results { get; set; }
         public virtual DbSet<Salary> Salaries { get; set; }
-        public virtual DbSet<Scholarship> Scholarships { get; set; }
-        public virtual DbSet<Section> Sections { get; set; }
+        public virtual DbSet<Scholarshipss> Scholarshipsses { get; set; }
+        public virtual DbSet<Sectionss> Sectionsses { get; set; }
         public virtual DbSet<Session> Sessions { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Expenditure> Expenditures { get; set; }
+        public virtual DbSet<Fe> Fes { get; set; }
+        public virtual DbSet<Scholarship> Scholarships { get; set; }
+        public virtual DbSet<Section> Sections { get; set; }
         public virtual DbSet<StudentResult> StudentResults { get; set; }
         public virtual DbSet<TimeTable> TimeTables { get; set; }
     }

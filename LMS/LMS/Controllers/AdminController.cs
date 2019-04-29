@@ -18,12 +18,12 @@ namespace LMS.Controllers
         }
         public ActionResult Courses()
         {
-            //DB49Entities4 db = new DB49Entities4();
-            //List<Department> departments = db.Departments.ToList();
-            //ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
+            DB49Entities4 db = new DB49Entities4();
+            List<Department> departments = db.Departments.ToList();
+            ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
 
-            //List<Session> sessions = db.Sessions.ToList();
-            //ViewBag.SessionList = new SelectList(sessions, "SessionID", "Session1");
+            List<Session> sessions = db.Sessions.ToList();
+            ViewBag.SessionList = new SelectList(sessions, "SessionID", "Session1");
             return View();
         }
         [HttpPost]
@@ -51,6 +51,7 @@ namespace LMS.Controllers
                 c.DepartmentID = obj.DepartmentID;
                 c.SessionID = obj.SessionID;
                 c.CreditHours = obj.CreditHours;
+                c.Semester = obj.Semester;
 
 
                 db.Courses.Add(c);
@@ -78,6 +79,10 @@ namespace LMS.Controllers
 
             List<Session> sessions = db.Sessions.ToList();
             ViewBag.SessionList = new SelectList(sessions, "SessionID", "Session1");
+
+            List<Department> departments = db.Departments.ToList();
+            ViewBag.DepartmentList = new SelectList(departments, "DepartmentId", "DepartmentName");
+            
             return View();
 
 
@@ -98,22 +103,25 @@ namespace LMS.Controllers
                 List<Session> sessions = r.Sessions.ToList();
                 ViewBag.SessionList = new SelectList(sessions, "SessionID", "Session1");
 
-             
+
+                List<Department> departments = r.Departments.ToList();
+                ViewBag.DepartmentList = new SelectList(departments, "DepartmentId", "DepartmentName");
+
+
                 Exam ex = new Exam();
                 Course c = new Course();
-              
+
                 Session n = new Session();
-                
-                r.Sessions.Add(n);
-                r.Courses.Add(c);
-                r.SaveChanges();
+
 
                 ex.ExamDate = obj.ExamDate;
                 ex.CourseID = obj.CourseID;
                 ex.SessionID = obj.SessionID;
+                ex.DepartmentId = obj.DepartmentId;
 
                 r.Exams.Add(ex);
                 r.SaveChanges();
+
 
 
                 Session[" ExamID"] = ex.ExamID.ToString();
@@ -123,12 +131,11 @@ namespace LMS.Controllers
 
             catch (DbEntityValidationException e)
             {
-
-
                 Console.WriteLine(e.ToString());
 
             }
             return View(obj);
+
 
 
         }

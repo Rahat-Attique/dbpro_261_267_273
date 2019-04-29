@@ -7,6 +7,8 @@
           <ScalarProperty Name="AttendanceID" ColumnName="AttendanceID" />
           <ScalarProperty Name="SectionID" ColumnName="SectionID" />
           <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Semester" ColumnName="Semester" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -18,6 +20,7 @@
           <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
           <ScalarProperty Name="SessionID" ColumnName="SessionID" />
           <ScalarProperty Name="CreditHours" ColumnName="CreditHours" />
+          <ScalarProperty Name="Semester" ColumnName="Semester" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -51,18 +54,18 @@
         <MappingFragment StoreEntitySet="Exam">
           <ScalarProperty Name="ExamID" ColumnName="ExamID" />
           <ScalarProperty Name="ExamDate" ColumnName="ExamDate" />
-          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
           <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Fes">
-      <EntityTypeMapping TypeName="DB49Model.Fe">
-        <MappingFragment StoreEntitySet="Fe">
-          <ScalarProperty Name="FeeID" ColumnName="FeeID" />
-          <ScalarProperty Name="ScholarshipID" ColumnName="ScholarshipID" />
-          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
+    <EntitySetMapping Name="Fees">
+      <EntityTypeMapping TypeName="DB49Model.Fee">
+        <MappingFragment StoreEntitySet="Fees">
+          <ScalarProperty Name="FeeId" ColumnName="FeeId" />
+          <ScalarProperty Name="Fees" ColumnName="Fees" />
+          <ScalarProperty Name="Semester" ColumnName="Semester" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -73,6 +76,15 @@
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lookups">
+      <EntityTypeMapping TypeName="DB49Model.Lookup">
+        <MappingFragment StoreEntitySet="Lookup">
+          <ScalarProperty Name="LookupID" ColumnName="LookupID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -90,6 +102,7 @@
         <MappingFragment StoreEntitySet="Result">
           <ScalarProperty Name="ResultID" ColumnName="ResultID" />
           <ScalarProperty Name="SectionID" ColumnName="SectionID" />
+          <ScalarProperty Name="CGPA" ColumnName="CGPA" />
           <ScalarProperty Name="Grade" ColumnName="Grade" />
           <ScalarProperty Name="CreditHours" ColumnName="CreditHours" />
           <ScalarProperty Name="SessionId" ColumnName="SessionId" />
@@ -108,23 +121,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Scholarships">
-      <EntityTypeMapping TypeName="DB49Model.Scholarship">
-        <MappingFragment StoreEntitySet="Scholarship">
+    <EntitySetMapping Name="Scholarshipsses">
+      <EntityTypeMapping TypeName="DB49Model.Scholarshipss">
+        <MappingFragment StoreEntitySet="Scholarshipss">
           <ScalarProperty Name="ScholarshipID" ColumnName="ScholarshipID" />
-          <ScalarProperty Name="ScholarshipName" ColumnName="ScholarshipName" />
-          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="Scholarship" ColumnName="Scholarship" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Sections">
-      <EntityTypeMapping TypeName="DB49Model.Section">
-        <MappingFragment StoreEntitySet="Section">
+    <EntitySetMapping Name="Sectionsses">
+      <EntityTypeMapping TypeName="DB49Model.Sectionss">
+        <MappingFragment StoreEntitySet="Sectionss">
           <ScalarProperty Name="SectionID" ColumnName="SectionID" />
           <ScalarProperty Name="SectionName" ColumnName="SectionName" />
-          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
-          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
-          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -161,6 +170,37 @@
           <ScalarProperty Name="FeeID" ColumnName="FeeID" />
           <ScalarProperty Name="SalaryID" ColumnName="SalaryID" />
           <ScalarProperty Name="ExpenditureID" ColumnName="ExpenditureID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fes">
+      <EntityTypeMapping TypeName="DB49Model.Fe">
+        <MappingFragment StoreEntitySet="Fe">
+          <ScalarProperty Name="FeeID" ColumnName="FeeID" />
+          <ScalarProperty Name="ScholarshipID" ColumnName="ScholarshipID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="LookupID" ColumnName="LookupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Scholarships">
+      <EntityTypeMapping TypeName="DB49Model.Scholarship">
+        <MappingFragment StoreEntitySet="Scholarship">
+          <ScalarProperty Name="ScholarshipID" ColumnName="ScholarshipID" />
+          <ScalarProperty Name="ScholarshipName" ColumnName="ScholarshipName" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sections">
+      <EntityTypeMapping TypeName="DB49Model.Section">
+        <MappingFragment StoreEntitySet="Section">
+          <ScalarProperty Name="SectionID" ColumnName="SectionID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

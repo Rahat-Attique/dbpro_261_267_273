@@ -14,20 +14,14 @@ namespace LMS.Models
     
     public partial class Fe
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Fe()
-        {
-            this.Expenditures = new HashSet<Expenditure>();
-        }
-    
         public int FeeID { get; set; }
         public int ScholarshipID { get; set; }
         public int StudentID { get; set; }
         public System.DateTime Date { get; set; }
+        public int LookupID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Expenditure> Expenditures { get; set; }
-        public virtual Scholarship Scholarship { get; set; }
+        public virtual Fee Fee { get; set; }
+        public virtual Lookup Lookup { get; set; }
         public virtual Student Student { get; set; }
     }
 }

@@ -4,7 +4,6 @@
     ViewBag.Title = "Courses";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
-
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
@@ -18,57 +17,73 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
+                        <h2>Courses</h2>
 
                         @using (Html.BeginForm())
                         {
                             @Html.AntiForgeryToken()
 
-                        <div class="form-horizontal">
-                            <h4>Course</h4>
-                            <hr />
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.CourseName, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.CourseName, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.CourseName, "", new { @class = "text-danger" })
+                            <div class="form-horizontal">
+                                <h4>Course</h4>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CourseName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.CourseName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.CourseName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.DepartmentID, "DepartmentName", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <br />
+
+                                        @Html.DropDownListFor(model => model.DepartmentID, ViewBag.DepartmentList as SelectList, "--SelectDepartment--", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.DepartmentID, "", new { @class = "error" })
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.SessionID, "Session1", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <br />
+
+                                        @Html.DropDownListFor(model => model.SessionID, ViewBag.SessionList as SelectList, "--SelectSession--", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.SessionID, "", new { @class = "error" })
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CreditHours, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.CreditHours, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.CreditHours, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Semester, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Semester, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Semester, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Create" class="btn btn-default" />
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.DepartmentID, "DepartmentName", htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    <br />
-
-                                    @Html.DropDownListFor(model => model.DepartmentID, ViewBag.DepartmentList as SelectList, "--SelectDepartment--", new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.DepartmentID, "", new { @class = "error" })
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.SessionID, "Session1", htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    <br />
-
-                                    @Html.DropDownListFor(model => model.SessionID, ViewBag.SessionList as SelectList, "--SelectSession--", new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.SessionID, "", new { @class = "error" })
-                                </div>
-                            </div>
-                            <br />
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.CreditHours, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.CreditHours, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.CreditHours, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Create" class="btn btn-default" />
-                                </div>
-                            </div>
-                        </div>
                         }
- 
+
+                        <div>
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>

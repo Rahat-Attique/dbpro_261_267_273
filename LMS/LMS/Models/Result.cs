@@ -22,6 +22,7 @@ namespace LMS.Models
     
         public int ResultID { get; set; }
         public Nullable<int> SectionID { get; set; }
+        public Nullable<double> CGPA { get; set; }
         public string Grade { get; set; }
         public string CreditHours { get; set; }
         public Nullable<int> SessionId { get; set; }
@@ -29,7 +30,6 @@ namespace LMS.Models
         public int RegisteredCourseID { get; set; }
     
         public virtual RegisteredCours RegisteredCours { get; set; }
-        public virtual Section Section { get; set; }
         public virtual Session Session { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentResult> StudentResults { get; set; }
