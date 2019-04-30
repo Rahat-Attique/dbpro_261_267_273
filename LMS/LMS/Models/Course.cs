@@ -29,8 +29,8 @@ namespace LMS.Models
         public int CreditHours { get; set; }
         public string Semester { get; set; }
     
+        public virtual Department Department { get; set; }
         public virtual Session Session { get; set; }
-        public virtual Session Session1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Exam> Exams { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

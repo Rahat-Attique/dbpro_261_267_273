@@ -18,8 +18,8 @@ namespace LMS.Models
         public Student()
         {
             this.RegisteredCourses = new HashSet<RegisteredCours>();
+            this.Scholars = new HashSet<Scholar>();
             this.Fes = new HashSet<Fe>();
-            this.Scholarships = new HashSet<Scholarship>();
             this.Sections = new HashSet<Section>();
             this.StudentResults = new HashSet<StudentResult>();
             this.ClassAttendances = new HashSet<ClassAttendance>();
@@ -44,11 +44,11 @@ namespace LMS.Models
         public virtual Login Login { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RegisteredCours> RegisteredCourses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Scholar> Scholars { get; set; }
         public virtual Session Session { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Fe> Fes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Scholarship> Scholarships { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Section> Sections { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

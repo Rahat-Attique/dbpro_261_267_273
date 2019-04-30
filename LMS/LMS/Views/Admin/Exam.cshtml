@@ -19,16 +19,18 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
 
-                        <h2>Exam</h2>
+                      
 
                         @using (Html.BeginForm())
                         {
                             @Html.AntiForgeryToken()
 
                             <div class="form-horizontal">
-                                <h4>Exam</h4>
+                           
                                 <hr />
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.ExamDate, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
@@ -38,7 +40,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.DepartmentId, "DepartmentName", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.DepartmentId, "DepartmentName", htmlAttributes: new { @class = "control-label col-md-5" })
                                     <div class="col-md-10">
                                         <br />
 
@@ -49,7 +51,7 @@
                                 <br />
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.SessionID, "Session1", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(model => model.SessionID, "SessionName", htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
                                         <br />
 

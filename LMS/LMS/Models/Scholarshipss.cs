@@ -17,13 +17,13 @@ namespace LMS.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Scholarshipss()
         {
-            this.Scholarships = new HashSet<Scholarship>();
+            this.Scholars = new HashSet<Scholar>();
         }
     
         public int ScholarshipID { get; set; }
         public string Scholarship { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Scholarship> Scholarships { get; set; }
+        public virtual ICollection<Scholar> Scholars { get; set; }
     }
 }

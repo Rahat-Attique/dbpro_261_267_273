@@ -20,10 +20,10 @@ namespace LMS.Models
             this.Expenditures = new HashSet<Expenditure>();
         }
     
+        public int EmployeeID { get; set; }
         public int Salary1 { get; set; }
         public System.DateTime Month { get; set; }
         public int SalaryID { get; set; }
-        public int Empid { get; set; }
     
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

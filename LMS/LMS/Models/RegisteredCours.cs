@@ -23,8 +23,11 @@ namespace LMS.Models
         public int RegisteredCourseID { get; set; }
         public int StudentID { get; set; }
         public int CourseID { get; set; }
+        public int Semester { get; set; }
+        public int SectionID { get; set; }
     
         public virtual Course Course { get; set; }
+        public virtual Sectionss Sectionss { get; set; }
         public virtual Student Student { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Result> Results { get; set; }
