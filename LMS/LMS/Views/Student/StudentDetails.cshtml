@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "StudentDetails";
+    Layout = "~/Views/Shared/_Student.cshtml";
+}
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">View Details</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayName("Email")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("RegistrationNumber")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("PhoneNumber")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Session")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("DOB")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Adress")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Department")
+                                </th>
+
+                                <th></th>
+
+
+
+                                <th></th>
+                            </tr>
+                            @if (Session["LoginID"] != null)
+                            {
+                                <tr>
+                                    <td>
+                                        @Session["Name"].ToString()
+                                    </td>
+                                    <td>  @Session["RegistrationNumber"] </td>
+                                    <td>  @Session["PhoneNumber"] </td>
+                                    <td> @Session["Session"] </td>
+                                    <td>  @Session["DOB"]</td>
+                                    <td>  @Session["Address"] </td>
+                                    <td> @Session["Department"]</td>
+                                    <td>@Html.ActionLink("Edit", "StudentEdit", new { id = @Session["StudentID"] }) </td>
+
+                                </tr>
+
+                            }
+                        </table>
