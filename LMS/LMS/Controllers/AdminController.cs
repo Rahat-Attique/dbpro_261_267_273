@@ -18,7 +18,7 @@ namespace LMS.Controllers
         }
         public ActionResult Courses()
         {
-            DB49Entities db = new DB49Entities();
+            DB49Entities1 db = new DB49Entities1();
             List<Department> departments = db.Departments.ToList();
             ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
 
@@ -32,7 +32,7 @@ namespace LMS.Controllers
             try
             {
                 string message;
-                DB49Entities db = new DB49Entities();
+                DB49Entities1 db = new DB49Entities1();
                 List<Department> departments = db.Departments.ToList();
                 ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
 
@@ -76,7 +76,7 @@ namespace LMS.Controllers
 
         public ActionResult Exam()
         {
-            DB49Entities db = new DB49Entities();
+            DB49Entities1 db = new DB49Entities1();
             List<Course> co = db.Courses.ToList();
             ViewBag.courseList = new SelectList(co, "CourseID", "CourseName");
 
@@ -99,7 +99,7 @@ namespace LMS.Controllers
             try
             {
                 string message;
-                DB49Entities r = new DB49Entities();
+                DB49Entities1 r = new DB49Entities1();
                 List<Course> co = r.Courses.ToList();
                 ViewBag.courseList = new SelectList(co, "CourseID", "CourseName");
 
@@ -156,7 +156,7 @@ namespace LMS.Controllers
         }
         public ActionResult ShowCourses()
         {
-            DB49Entities db = new DB49Entities();
+            DB49Entities1 db = new DB49Entities1();
             List<Course> p = new List<Course>();
             Course o = new Course();
             p = db.Courses.ToList();
@@ -168,7 +168,7 @@ namespace LMS.Controllers
         [HttpGet]
         public ActionResult EditCourse(int id)
         {
-            using (DB49Entities db = new DB49Entities())
+            using (DB49Entities1 db = new DB49Entities1())
             {
                 List<Department> departments = db.Departments.ToList();
                 ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
@@ -193,7 +193,7 @@ namespace LMS.Controllers
         public ActionResult EditCourse(Course obj, int id)
         {
 
-            using (DB49Entities db = new DB49Entities())
+            using (DB49Entities1 db = new DB49Entities1())
             {
                 List<Department> departments = db.Departments.ToList();
                 ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
@@ -226,7 +226,7 @@ namespace LMS.Controllers
         }
         public ActionResult RegisterStudent()
         {
-            DB49Entities k = new DB49Entities();
+            DB49Entities1 k = new DB49Entities1();
            
             List<Department> departments = k.Departments.ToList();
             ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName ");
@@ -242,7 +242,7 @@ namespace LMS.Controllers
 
             try
             {
-                DB49Entities db = new DB49Entities();
+                DB49Entities1 db = new DB49Entities1();
 
                 List<Department> list = db.Departments.ToList();
                 ViewBag.DepartmentList = new SelectList(list, "DepartmentID", "DepartmentName");
@@ -254,66 +254,150 @@ namespace LMS.Controllers
                 site.Password = obj.Password;
                 site.Type = "stu";
                 string message = string.Empty;
-               // using (HMSEntities k = new HMSEntities())
-                    if (db.Logins.Any(x => x.Email == obj.EmailId))
-                    {  //{
-                       //  ViewData["error"] = "User Already exits";
+                // using (HMSEntities k = new HMSEntities())
+                if (db.Logins.Any(x => x.Email == obj.EmailId))
+                {  //{
+                   //  ViewData["error"] = "User Already exits";
 
-                        message = "Email is already taken register with another EmailID";
-                        //   // return View("StuRegister",)
-                        // return RedirectToAction("Login");
-                        //    ViewBag.ErrorMessage = "Email not found or matched"
-                        //return View();
-                    }
-                    else
-                    {
-                        db.Logins.Add(site);
-                        db.SaveChanges();
+                    message = "Email is already taken register with another EmailID";
+                   
+                }
+                else
+                {
+                    db.Logins.Add(site);
+                    db.SaveChanges();
 
-                        k.Name = obj.Name;
+                    k.Name = obj.Name;
                     k.EmailId = obj.EmailId;
                     k.Password = obj.Password;
-                        k.FatherName = obj.FatherName;
-                        k.Address = obj.Address;
-                        k.PhoneNumber = obj.PhoneNumber;
-                        k.DOB = obj.DOB;
-                        k.DepartmentID = obj.DepartmentID;
-                        k.PhoneNumber = obj.PhoneNumber;
-                        k.RegistrationNumber = obj.RegistrationNumber;
-                        k.CNIC = obj.CNIC;
+                    k.FatherName = obj.FatherName;
+                    k.Address = obj.Address;
+                    k.PhoneNumber = obj.PhoneNumber;
+                    k.DOB = obj.DOB;
+                    k.DepartmentID = obj.DepartmentID;
+                    k.PhoneNumber = obj.PhoneNumber;
+                    k.RegistrationNumber = obj.RegistrationNumber;
+
+                    k.CNIC = obj.CNIC;
+                    k.Type = "stu";
                     //    k.Login.Type = "stu";
                     k.LoginID = obj.LoginID;
 
 
 
-                        int latestid = site.LoginID;
+                    int latestid = site.LoginID;
 
-                        k.LoginID = site.LoginID;
-
-
-                        k.Address = obj.Address;
-                        //  k.DOB = obj.Address;
-
-                        k.SessionId = obj.SessionId;
-                        //    k.Designation = obj.Designation;
+                    k.LoginID = site.LoginID;
 
 
-                        //  k.Login.LoginID = obj.LoginID;
-                        //k.StudentID = latestid;
+                    k.Address = obj.Address;
+                    //  k.DOB = obj.Address;
+
+                    k.SessionId = obj.SessionId;
+                    //    k.Designation = obj.Designation;
+
+
+                    //  k.Login.LoginID = obj.LoginID;
+                    //k.StudentID = latestid;
 
 
 
-                        db.Students.Add(k);
-                        db.SaveChanges();
-                       message = "Registration successful.\\nUser Id: " + site.LoginID.ToString();
-                        //    return RedirectToAction("Login");
+                    db.Students.Add(k);
+                    db.SaveChanges();
+                    message = "Registration successful.\\nUser Id: " + site.LoginID.ToString();
+                    //    return RedirectToAction("Login");
 
-                        ////  int lateststuID = k.StudentID;
+                    ////  int lateststuID = k.StudentID;
 
-                        //  }
+                    //  }
 
-                        ViewBag.Message = message;
-                    }
+                    ViewBag.Message = message;
+                }
+            }
+            catch (DbEntityValidationException e)
+            {
+
+
+                Console.WriteLine(e.ToString());
+
+            }
+
+
+            return View(obj);
+        }
+        public ActionResult RegisterEmployee()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult RegisterEmployee(Employee obj)
+        {
+
+            try
+            {
+                DB49Entities1 db = new DB49Entities1();
+
+                Employee k = new Employee();
+
+                Login site = new Login();
+                site.Email = obj.EmailID;
+                site.Password = obj.Password;
+                site.Type = "emp";
+                string message = string.Empty;
+                // using (HMSEntities k = new HMSEntities())
+                if (db.Logins.Any(x => x.Email == obj.EmailID))
+                {  //{
+                   //  ViewData["error"] = "User Already exits";
+
+                    message = "Email is already taken register with another EmailID";
+                    //   // return View("StuRegister",)
+                    // return RedirectToAction("Login");
+                    //    ViewBag.ErrorMessage = "Email not found or matched"
+                    //return View();
+                }
+                else
+                {
+                    db.Logins.Add(site);
+                    db.SaveChanges();
+
+                    k.Name = obj.Name;
+                    k.EmailID = obj.EmailID;
+                    k.Password = obj.Password;
+                    k.FatherName = obj.FatherName;
+                    k.Address = obj.Address;
+                    k.ContactNumber = obj.ContactNumber;
+                    k.DOB = obj.DOB;
+                    k.MonthlySalary = obj.MonthlySalary;
+                    k.Designation = obj.Designation;
+
+                    k.CNIC = obj.CNIC;
+                    k.Type = "emp";
+                    //    k.Login.Type = "stu";
+                    k.LoginID = obj.LoginID;
+
+
+
+                    int latestid = site.LoginID;
+
+                    k.LoginID = site.LoginID;
+
+
+
+
+
+
+                    db.Employees.Add(k);
+                    db.SaveChanges();
+                    message = "Registration successful.\\nUser Id: " + site.LoginID.ToString();
+                    //    return RedirectToAction("Login");
+
+                    ////  int lateststuID = k.StudentID;
+
+                    //  }
+
+                    ViewBag.Message = message;
+                }
             }
             catch (DbEntityValidationException e)
             {
@@ -341,60 +425,96 @@ namespace LMS.Controllers
 
             else
             {
-                using (DB49Entities db = new DB49Entities())
+                using (DB49Entities1 db = new DB49Entities1())
                 {
-                   
-                     var j = db.Logins.Where(x => x.Email == l.Email && x.Password == l.Password);// (from Login in db.Logins where Login.Email == l.Email && Login.Password == l.Password select Login.Type);
-                    var v = j.FirstOrDefault();
+
+                    var v = db.Logins.Any(x => x.Email == l.Email && x.Password == l.Password);//.ToList();// (from Login in db.Logins where Login.Email == l.Email && Login.Password == l.Password select Login.Type);
+                                                                                               //  var v = j.FirstOrDefault();
 
                     //var v = db.Logins.Where(x => x.Email == l.Email && x.Password == l.Password).FirstOrDefault();
-                    if (v != null)
 
+
+
+                    //var v = db.Logins.Any(x => x.Email == l.Email && x.Password == l.Password && x.Type == l.Type);
+                    var k = db.Students.Where(d => d.Type == "stu" && d.EmailId == l.Email).ToList();
+                    if (k != null)
                     {
+                        foreach (var item in k)
 
-                        var k = db.Students.Where(d => d.Login.Type == l.Type && d.EmailId == l.Email).FirstOrDefault();
+                        {  //  var k = db.Students.Select(new Student { EmailId = l.Email  }).ToList();
 
+                            if (item != null)
+                            {
 
-                        if (k != null)
-                        {
+                                Session["LoginID"] = item.LoginID.ToString();
+                                Session["Name"] = item.Name.ToString();
+                                Session["StudentID"] = item.StudentId.ToString();
+                                Session["RegistrationNumber"] = item.RegistrationNumber.ToString();
+                                Session["PhoneNumber"] = item.PhoneNumber.ToString();
+                                Session["Session"] = item.SessionId.ToString();
+                                Session["Address"] = item.Address.ToString();
+                                Session["DOB"] = item.DOB.ToString();
+                                Session["Department"] = item.Department.DepartmentID.ToString();
+                                return RedirectToAction("StudentDetails", "Student");
+                            }
+                            //else if (item == null)
+                            //{
+                            //    return RedirectToAction("Result", "Admin");
+                            //}
 
-                            //Session["LoginID"] = k.LoginID.ToString();
-                            //Session["Name"] = k.Name.ToString();
-                            //Session["StudentID"] = k.StudentId.ToString();
-                            //Session["RegistrationNumber"] = k.RegistrationNumber.ToString();
-                            //Session["PhoneNumber"] = k.PhoneNumber.ToString();
-                            //Session["Session"] = k.Session.ToString();
-                            //Session["Address"] = k.Address.ToString();
-                            //Session["DOB"] = k.DOB.ToString();
-                            //Session["Department"] = k.Department.DepartmentID.ToString();
-                            return RedirectToAction("Exam", "Admin");
-                        }
-                        else if (k == null)
-                        {
-                            return RedirectToAction("Result", "Admin");
-                        }
-                        else
-                        {
-                            string message;
-                            message = ("Invalid Login Attempt");
-                            ViewBag.Message = message;
 
                         }
                     }
-                    else
+                    //else
                     {
-                        return RedirectToAction("Result", "Admin");
-                    }
+                        var p = db.Employees.Where(d => d.Type == "emp" && d.EmailID == l.Email).ToList();
 
+                        foreach (var item in p)
+
+                        {  //  var k = db.Students.Select(new Student { EmailId = l.Email  }).ToList();
+
+                            if (item != null)
+                            {
+
+                                Session["LoginID"] = item.LoginID.ToString();
+                                Session["EmailID"] = item.EmailID.ToString();
+                                Session["EmployeeID"] = item.EmployeeID.ToString();
+                                Session["Designation"] = item.Designation.ToString();
+                                //Session["PhoneNumber"] = k.PhoneNumber.ToString();
+                                //Session["Session"] = k.Session.ToString();
+                                //Session["Address"] = k.Address.ToString();
+                                //Session["DOB"] = k.DOB.ToString();
+                                //Session["Department"] = k.Department.DepartmentID.ToString();
+                                return RedirectToAction("EmployeDetails", "Employee");
+                            }
+
+                        }
+                        //  return RedirectToAction("Result", "Admin");
+                        //}
+
+
+                        //else
+                        //{
+                        //    string message;
+                        //    message = ("Invalid Login Attempt");
+                        //    ViewBag.Message = message;
+
+
+                        //}
+
+
+
+                    }
                 }
-            }
-            return View(l);
-        }
+                return View(l);
 
+
+            }
+        }
 
         public ActionResult AddFee()
         {
-            DB49Entities db = new DB49Entities();
+            DB49Entities1 db = new DB49Entities1();
             return View();
         }
 
@@ -403,7 +523,7 @@ namespace LMS.Controllers
         {
             try { 
             string message;
-            DB49Entities db = new DB49Entities();
+            DB49Entities1 db = new DB49Entities1();
 
             // Student l = new Student();
             Fee c = new Fee();
@@ -416,7 +536,7 @@ namespace LMS.Controllers
             db.Fees.Add(c);
             db.SaveChanges();
             // Session[" CourseID"] = c.CourseID.ToString();
-            message = " Fee Added Successfully.\\nCourse Id:" + c.FeeId.ToString();
+            message = " Fee Added Successfully.\\nFee Id:" + c.FeeId.ToString();
             ViewBag.Message = message;
         }
 

@@ -33,9 +33,12 @@
                                     @Html.DisplayNameFor(model => model.CreditHours)
                                 </th>
                                 <th>
+                                    @Html.DisplayNameFor(model => model.Semester)
+                                </th>
+                                <th>
                                     @Html.DisplayNameFor(model => model.Session.Session1)
                                 </th>
-                                
+
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -53,9 +56,12 @@
                                     @Html.DisplayFor(modelItem => item.CreditHours)
                                 </td>
                                 <td>
+                                    @Html.DisplayFor(modelItem => item.Semester)
+                                </td>
+                                <td>
                                     @Html.DisplayFor(modelItem => item.Session.Session1)
                                 </td>
-                                 
+
 
                                 <td>@Html.ActionLink("Edit", "EditCourse", new { id = item.CourseID }) </td>
                                 <td>@Html.ActionLink("Delete", "DeleteCourse", new { id = item.CourseID }) </td>

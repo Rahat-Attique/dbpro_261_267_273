@@ -38,6 +38,7 @@ namespace LMS.Models
         public System.DateTime DOB { get; set; }
         public int LoginID { get; set; }
         public string Password { get; set; }
+        public string Type { get; set; }
     
         public virtual Department Department { get; set; }
         public virtual Login Login { get; set; }

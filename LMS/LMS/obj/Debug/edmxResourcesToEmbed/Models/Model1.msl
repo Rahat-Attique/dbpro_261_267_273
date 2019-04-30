@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DB49ModelStoreContainer" CdmEntityContainer="DB49Entities">
+  <EntityContainerMapping StorageEntityContainer="DB49ModelStoreContainer" CdmEntityContainer="DB49Entities1">
     <EntitySetMapping Name="ClassAttendances">
       <EntityTypeMapping TypeName="DB49Model.ClassAttendance">
         <MappingFragment StoreEntitySet="ClassAttendance">
@@ -46,6 +46,8 @@
           <ScalarProperty Name="MonthlySalary" ColumnName="MonthlySalary" />
           <ScalarProperty Name="DOB" ColumnName="DOB" />
           <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -114,10 +116,10 @@
     <EntitySetMapping Name="Salaries">
       <EntityTypeMapping TypeName="DB49Model.Salary">
         <MappingFragment StoreEntitySet="Salary">
-          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
           <ScalarProperty Name="Salary1" ColumnName="Salary" />
           <ScalarProperty Name="Month" ColumnName="Month" />
           <ScalarProperty Name="SalaryID" ColumnName="SalaryID" />
+          <ScalarProperty Name="Empid" ColumnName="Empid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -161,6 +163,7 @@
           <ScalarProperty Name="DOB" ColumnName="DOB" />
           <ScalarProperty Name="LoginID" ColumnName="LoginID" />
           <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
