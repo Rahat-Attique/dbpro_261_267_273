@@ -144,7 +144,19 @@ namespace LMS.Controllers
         }
         public ActionResult Result()
         {
+            DB49Entities db = new DB49Entities();
+            ViewBag.departments = db.Departments.ToList();
             return View();
+        }
+
+        public ActionResult StudentsFunction(int DepartmentsID)
+        {
+            DB49Entities db = new DB49Entities();
+            return Json(db.Students.Where(s => s.DepartmentID == DepartmentsID).Select(s => new {
+
+                Id = s.StudentId,
+                name = s.Name,
+            }).ToList(),JsonRequestBehavior.AllowGet);
         }
         public ActionResult ShowResult()
         {

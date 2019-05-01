@@ -290,6 +290,7 @@
     <Content Include="Content\js\flot\jquery.flot.threshold.js" />
     <Content Include="Content\js\flot\jquery.flot.time.js" />
     <Content Include="Content\js\flot\jquery.flot.tooltip.min.js" />
+    <Content Include="Content\js\jquery-1.7.1.min.js" />
     <Content Include="Content\js\jquery.min.js" />
     <Content Include="Content\js\metisMenu.min.js" />
     <Content Include="Content\js\morris-data.js" />
