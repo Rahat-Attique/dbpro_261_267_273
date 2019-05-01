@@ -1,0 +1,61 @@
+﻿@model IEnumerable<LMS.Models.RegisteredCours>
+
+@{
+    ViewBag.Title = "ShowRegisteredCourses";
+    Layout = "~/Views/Shared/_Student.cshtml";
+}
+
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">View Registered Courses</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+
+
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Semester)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Course.CourseName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Sectionss.SectionName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Student.Name)
+                                </th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+
+                            @if (Session["RegisteredCourseID"] != null)
+                            {
+                            <tr>
+                                @*<td>
+            @Session["Name"].ToString()
+        </td>*@
+                                <td>  @Session["Semester"] </td>
+                                <td>  @Session["CourseName"] </td>
+                                <td>  @Session["SectionName"] </td>
+                                <td>  @Session["Name"] </td>
+                                @*<td> @Session[""] </td>
+        <td>  @Session["DOB"]</td>
+        <td>  @Session["Address"] </td>
+        <td> @Session["Department"]</td>
+        <td>@Html.ActionLink("Edit", "StudentEdit", new { id = @Session["StudentID"] }) </td>*@
+
+                            </tr>
+
+                            }
+                        </table>

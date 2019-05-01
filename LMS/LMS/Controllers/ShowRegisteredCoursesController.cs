@@ -13,5 +13,20 @@ namespace LMS.Controllers
         {
             return View();
         }
+
+        public ActionResult ShowRegisteredCourses()
+        {
+
+            if (Session["RegisteredCourseID"] != null)
+            {
+                return View();
+
+            }
+            else
+            {
+                return RedirectToAction("RegisterCourses", "Student");
+            }
+         
+        }
     }
 }
