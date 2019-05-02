@@ -1,0 +1,53 @@
+﻿@model IEnumerable<LMS.Models.Fee>
+
+@{
+    ViewBag.Title = "ShowFee";
+    Layout = "~/Views/Shared/_Student.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">View Semester wise Fee</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+
+                        
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Fees)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Semester)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Date)
+                                </th>
+                              
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Fees)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Semester)
+                                    </td>
+                                   <td>
+                                        @Html.DisplayFor(modelItem => item.Date)
+                                    </td> 
+ 
+                                </tr>
+                            }
+
+                        </table>

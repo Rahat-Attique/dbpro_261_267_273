@@ -15,13 +15,13 @@ namespace LMS.Models
     public partial class Fe
     {
         public int FeeID { get; set; }
-        public int ScholarshipID { get; set; }
+        public Nullable<int> ScholarshipID { get; set; }
         public int StudentID { get; set; }
-        public System.DateTime Date { get; set; }
         public int LookupID { get; set; }
+        public Nullable<double> NewFee { get; set; }
     
-        public virtual Fee Fee { get; set; }
         public virtual Lookup Lookup { get; set; }
+        public virtual Scholarshipss Scholarshipss { get; set; }
         public virtual Student Student { get; set; }
     }
 }

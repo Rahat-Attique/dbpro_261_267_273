@@ -18,7 +18,7 @@ namespace LMS.Controllers
         }
         public ActionResult CourseRegister()
         {
-            DB49Entities1 db = new DB49Entities1();
+            DB49Entities4 db = new DB49Entities4();
 
             List<Course> co = db.Courses.ToList();
             ViewBag.courseList = new SelectList(co, "CourseID", "CourseName");
@@ -32,15 +32,15 @@ namespace LMS.Controllers
         [HttpPost]
         public ActionResult CourseRegister(RegisteredCours obj)
         {
-            
+
 
 
 
             //
             try
             {
-                string message;
-                DB49Entities1 db = new DB49Entities1();
+                // string message;
+                DB49Entities4 db = new DB49Entities4();
 
                 List<Course> co = db.Courses.ToList();
                 ViewBag.courseList = new SelectList(co, "CourseID", "CourseName");
@@ -65,12 +65,27 @@ namespace LMS.Controllers
                 db.RegisteredCourses.Add(r);
                 db.SaveChanges();
 
-                Session["RegisteredCourseID"] = r.RegisteredCourseID.ToString();
-                message = " Course Registered Successfully.\\nRegisteredCourse Id:" + r.RegisteredCourseID.ToString();
-                ViewBag.Message = message;
+                //var p = db.RegisteredCourses.Where(d.StudentID== l.Email).ToList();
+
+                //foreach (var item in p)
+
+                //{  //  var k = db.Students.Select(new Student { EmailId = l.Email  }).ToList();
+
+                //    if (item != null)
+                //    {
+
+                //        Session["RegisteredCourseID"] = r.RegisteredCourseID.ToString();
+                //        Session["Semester"] = r.Semester.ToString();
+                //        Session["SectionID"] = r.SectionID.ToString();
+                //        Session["CourseID"] = r.CourseID.ToString();
+                //        Session["StudentID"] = r.CourseID.ToString();
+                //        return RedirectToAction("ShowRegisteredCourses", "Student");
+                        // message = " Course Registered Successfully.\\nRegisteredCourse Id:" + r.RegisteredCourseID.ToString();
+                        //ViewBag.Message = message;
 
 
-
+                    
+                
             }
 
             catch (DbEntityValidationException e)

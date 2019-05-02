@@ -14,17 +14,9 @@ namespace LMS.Models
     
     public partial class Fee
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Fee()
-        {
-            this.Fes = new HashSet<Fe>();
-        }
-    
         public int FeeId { get; set; }
         public int Fees { get; set; }
         public string Semester { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Fe> Fes { get; set; }
+        public System.DateTime Date { get; set; }
     }
 }

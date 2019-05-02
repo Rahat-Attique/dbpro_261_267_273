@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DB49ModelStoreContainer" CdmEntityContainer="DB49Entities1">
+  <EntityContainerMapping StorageEntityContainer="DB49ModelStoreContainer" CdmEntityContainer="DB49Entities4">
     <EntitySetMapping Name="ClassAttendances">
       <EntityTypeMapping TypeName="DB49Model.ClassAttendance">
         <MappingFragment StoreEntitySet="ClassAttendance">
@@ -62,12 +62,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Fes">
+      <EntityTypeMapping TypeName="DB49Model.Fe">
+        <MappingFragment StoreEntitySet="Fe">
+          <ScalarProperty Name="FeeID" ColumnName="FeeID" />
+          <ScalarProperty Name="ScholarshipID" ColumnName="ScholarshipID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="LookupID" ColumnName="LookupID" />
+          <ScalarProperty Name="NewFee" ColumnName="NewFee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Fees">
       <EntityTypeMapping TypeName="DB49Model.Fee">
         <MappingFragment StoreEntitySet="Fees">
           <ScalarProperty Name="FeeId" ColumnName="FeeId" />
           <ScalarProperty Name="Fees" ColumnName="Fees" />
           <ScalarProperty Name="Semester" ColumnName="Semester" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -184,17 +196,6 @@
           <ScalarProperty Name="FeeID" ColumnName="FeeID" />
           <ScalarProperty Name="SalaryID" ColumnName="SalaryID" />
           <ScalarProperty Name="ExpenditureID" ColumnName="ExpenditureID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Fes">
-      <EntityTypeMapping TypeName="DB49Model.Fe">
-        <MappingFragment StoreEntitySet="Fe">
-          <ScalarProperty Name="FeeID" ColumnName="FeeID" />
-          <ScalarProperty Name="ScholarshipID" ColumnName="ScholarshipID" />
-          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="LookupID" ColumnName="LookupID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -68,21 +68,15 @@ warning 6002: The table/view 'DB49.dbo.Expenditure' does not have a primary key 
     <Property Name="SalaryID" Type="int" Nullable="false" />
     <Property Name="ExpenditureID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'DB49.dbo.Fe' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Fe">
     <Key>
       <PropertyRef Name="FeeID" />
-      <PropertyRef Name="ScholarshipID" />
-      <PropertyRef Name="StudentID" />
-      <PropertyRef Name="Date" />
-      <PropertyRef Name="LookupID" />
     </Key>
     <Property Name="FeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ScholarshipID" Type="int" Nullable="false" />
+    <Property Name="ScholarshipID" Type="int" />
     <Property Name="StudentID" Type="int" Nullable="false" />
-    <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="LookupID" Type="int" Nullable="false" />
+    <Property Name="NewFee" Type="float" />
   </EntityType>
   <EntityType Name="Fees">
     <Key>
@@ -91,6 +85,7 @@ warning 6002: The table/view 'DB49.dbo.Fe' does not have a primary key defined. 
     <Property Name="FeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Fees" Type="int" Nullable="false" />
     <Property Name="Semester" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="Login">
     <Key>
@@ -336,18 +331,6 @@ warning 6002: The table/view 'DB49.dbo.TimeTable' does not have a primary key de
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Fe_Fees">
-    <End Role="Fees" Type="Self.Fees" Multiplicity="1" />
-    <End Role="Fe" Type="Self.Fe" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Fees">
-        <PropertyRef Name="FeeId" />
-      </Principal>
-      <Dependent Role="Fe">
-        <PropertyRef Name="FeeID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Fe_Lookup">
     <End Role="Lookup" Type="Self.Lookup" Multiplicity="1" />
     <End Role="Fe" Type="Self.Fe" Multiplicity="*" />
@@ -357,6 +340,18 @@ warning 6002: The table/view 'DB49.dbo.TimeTable' does not have a primary key de
       </Principal>
       <Dependent Role="Fe">
         <PropertyRef Name="LookupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Fe_Scholarshipss">
+    <End Role="Scholarshipss" Type="Self.Scholarshipss" Multiplicity="0..1" />
+    <End Role="Fe" Type="Self.Fe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Scholarshipss">
+        <PropertyRef Name="ScholarshipID" />
+      </Principal>
+      <Dependent Role="Fe">
+        <PropertyRef Name="ScholarshipID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -618,6 +613,7 @@ warning 6002: The table/view 'DB49.dbo.TimeTable' does not have a primary key de
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Exam" EntityType="Self.Exam" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fe" EntityType="Self.Fe" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Fees" EntityType="Self.Fees" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
@@ -635,15 +631,6 @@ warning 6002: The table/view 'DB49.dbo.TimeTable' does not have a primary key de
     [Expenditure].[SalaryID] AS [SalaryID], 
     [Expenditure].[ExpenditureID] AS [ExpenditureID]
     FROM [dbo].[Expenditure] AS [Expenditure]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="Fe" EntityType="Self.Fe" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [Fe].[FeeID] AS [FeeID], 
-    [Fe].[ScholarshipID] AS [ScholarshipID], 
-    [Fe].[StudentID] AS [StudentID], 
-    [Fe].[Date] AS [Date], 
-    [Fe].[LookupID] AS [LookupID]
-    FROM [dbo].[Fe] AS [Fe]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="Section" EntityType="Self.Section" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -708,12 +695,12 @@ warning 6002: The table/view 'DB49.dbo.TimeTable' does not have a primary key de
       <End Role="Salary" EntitySet="Salary" />
       <End Role="Expenditure" EntitySet="Expenditure" />
     </AssociationSet>
-    <AssociationSet Name="FK_Fe_Fees" Association="Self.FK_Fe_Fees">
-      <End Role="Fees" EntitySet="Fees" />
-      <End Role="Fe" EntitySet="Fe" />
-    </AssociationSet>
     <AssociationSet Name="FK_Fe_Lookup" Association="Self.FK_Fe_Lookup">
       <End Role="Lookup" EntitySet="Lookup" />
+      <End Role="Fe" EntitySet="Fe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Fe_Scholarshipss" Association="Self.FK_Fe_Scholarshipss">
+      <End Role="Scholarshipss" EntitySet="Scholarshipss" />
       <End Role="Fe" EntitySet="Fe" />
     </AssociationSet>
     <AssociationSet Name="FK_Fe_Student" Association="Self.FK_Fe_Student">
