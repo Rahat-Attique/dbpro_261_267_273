@@ -19,7 +19,10 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
 
-                        
+
+                        <p>
+                            <a class="btn btn-primary" href="@Url.Action("ReportFee")">Download Report</a>
+                        </p>
                         <table class="table">
                             <tr>
                                 <th>
@@ -31,7 +34,7 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.Date)
                                 </th>
-                              
+
                             </tr>
 
                             @foreach (var item in Model)
@@ -43,10 +46,10 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Semester)
                                     </td>
-                                   <td>
+                                    <td>
                                         @Html.DisplayFor(modelItem => item.Date)
-                                    </td> 
- 
+                                    </td>
+
                                 </tr>
                             }
 

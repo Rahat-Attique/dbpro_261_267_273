@@ -1,0 +1,46 @@
+﻿@model IEnumerable<LMS.Models.Scholar>
+
+@{
+    ViewBag.Title = "ShowScholarship";
+    Layout = "~/Views/Shared/_Student.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">View Scholarships</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+ 
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Scholarshipss.Scholarship)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Student.Name)
+                                </th>
+                           
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Scholarshipss.Scholarship)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Student.Name)
+                                    </td>
+                                
+                                </tr>
+                            }
+
+                        </table>

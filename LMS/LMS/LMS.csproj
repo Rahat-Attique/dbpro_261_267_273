@@ -258,6 +258,18 @@
       <DependentUpon>CrystalReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\CrystalReportFee.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReportFee.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\CrystalReportNewFee.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReportNewFee.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -308,6 +320,7 @@
     <Content Include="Content\js\startmin.js" />
     <Content Include="Content\pages\AdminReports.html" />
     <Content Include="Content\pages\blank.html" />
+    <Content Include="Content\pages\book.jpeg" />
     <Content Include="Content\pages\buttons.html" />
     <Content Include="Content\pages\courses form.html" />
     <Content Include="Content\pages\empLogin.html" />
@@ -316,6 +329,7 @@
     <Content Include="Content\pages\flot.html" />
     <Content Include="Content\pages\forms.html" />
     <Content Include="Content\pages\grid.html" />
+    <Content Include="Content\pages\Home.html" />
     <Content Include="Content\pages\icons.html" />
     <Content Include="Content\pages\index.html" />
     <Content Include="Content\pages\login.html" />
@@ -450,6 +464,8 @@
     <Content Include="Views\Admin\UpdateFee.cshtml" />
     <Content Include="Views\Student\UpFeeChallan.cshtml" />
     <Content Include="Views\Admin\AdminShowUpFeeChallan.cshtml" />
+    <Content Include="Views\Student\ShowScholarship.cshtml" />
+    <Content Include="Views\Admin\ShowScholarship.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -475,6 +491,14 @@
     <EmbeddedResource Include="Report\CrystalReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\CrystalReportFee.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportFee.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\CrystalReportNewFee.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportNewFee.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

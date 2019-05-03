@@ -609,6 +609,15 @@ namespace LMS.Controllers
             return View();
         }
 
+        public ActionResult ShowScholarship()
+        {
+            DB49Entities5 db = new DB49Entities5();
+            List<Scholar> p = new List<Scholar>();
+            Scholar o = new Scholar();
+            p = db.Scholars.ToList();
+            return View(p);
+        }
+
         [HttpPost]
         public ActionResult AddScholarship(Scholar obj)
         {
@@ -742,10 +751,30 @@ namespace LMS.Controllers
         public ActionResult AdminShowUpFeeChallan()
         {
             DB49Entities5 db = new DB49Entities5();
-            List<Fe> p = new List<Fe>();
-            Fe o = new Fe();
-            p = db.Fes.ToList();
-            return View(p);
+            return View(db.Fes.ToList());
+        }
+
+        public ActionResult ReportScholarshipFee()
+        {
+            DB49Entities5 db = new DB49Entities5();
+
+            ReportDocument rd = new ReportDocument();
+            rd.Load(Path.Combine(Server.MapPath("~/Report"), "CrystalReportNewFee.rpt"));
+            rd.SetDataSource(db.Fes.ToList());
+            Response.Buffer = false;
+            Response.ClearContent();
+            Response.ClearHeaders();
+            try
+            {
+                Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                stream.Seek(0, SeekOrigin.Begin);
+                return File(stream, "application/pdf", "Fee_list.pdf");
+
+            }
+            catch
+            {
+                throw;
+            }
         }
 
 
