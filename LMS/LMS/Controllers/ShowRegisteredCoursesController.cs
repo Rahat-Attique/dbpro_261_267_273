@@ -24,7 +24,7 @@ namespace LMS.Controllers
             }
             else
             {
-                return RedirectToAction("RegisterCourses", "Student");
+                return RedirectToAction("CourseRegister", "RegisteredCourses");
             }
          
         }

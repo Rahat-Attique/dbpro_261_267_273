@@ -18,7 +18,7 @@ namespace LMS.Controllers
         }
         public ActionResult CourseRegister()
         {
-            DB49Entities4 db = new DB49Entities4();
+            DB49Entities5 db = new DB49Entities5();
 
             List<Course> co = db.Courses.ToList();
             ViewBag.courseList = new SelectList(co, "CourseID", "CourseName");
@@ -40,7 +40,7 @@ namespace LMS.Controllers
             try
             {
                 // string message;
-                DB49Entities4 db = new DB49Entities4();
+                DB49Entities5 db = new DB49Entities5();
 
                 List<Course> co = db.Courses.ToList();
                 ViewBag.courseList = new SelectList(co, "CourseID", "CourseName");
@@ -64,28 +64,33 @@ namespace LMS.Controllers
 
                 db.RegisteredCourses.Add(r);
                 db.SaveChanges();
+               // Student s = new Student();
 
-                //var p = db.RegisteredCourses.Where(d.StudentID== l.Email).ToList();
+                //  var p = db.Employees.Where(d => d.Type == "emp" && d.EmailID == l.Email).ToList();
+                var p = db.RegisteredCourses.Where(n => n.StudentID == obj.StudentID).ToList();
 
-                //foreach (var item in p)
+                foreach (var item in p)
 
-                //{  //  var k = db.Students.Select(new Student { EmailId = l.Email  }).ToList();
+                {  
+                    // var k = db.Students.Select(new Student { EmailId = l.Email  }).ToList();
 
-                //    if (item != null)
-                //    {
+                    if (item != null)
+                    {
 
-                //        Session["RegisteredCourseID"] = r.RegisteredCourseID.ToString();
-                //        Session["Semester"] = r.Semester.ToString();
-                //        Session["SectionID"] = r.SectionID.ToString();
-                //        Session["CourseID"] = r.CourseID.ToString();
-                //        Session["StudentID"] = r.CourseID.ToString();
-                //        return RedirectToAction("ShowRegisteredCourses", "Student");
+                        Session["RegisteredCourseID"] = r.RegisteredCourseID.ToString();
+                        Session["Semester"] = r.Semester.ToString();
+                        Session["SectionID"] = r.SectionID.ToString();
+                        Session["CourseID"] = r.CourseID.ToString();
+                        Session["StudentID"] = r.CourseID.ToString();
+                        return RedirectToAction("ShowRegisteredCourses", "ShowRegisteredCourses");
                         // message = " Course Registered Successfully.\\nRegisteredCourse Id:" + r.RegisteredCourseID.ToString();
                         //ViewBag.Message = message;
 
 
-                    
-                
+
+
+                    }
+                }
             }
 
             catch (DbEntityValidationException e)

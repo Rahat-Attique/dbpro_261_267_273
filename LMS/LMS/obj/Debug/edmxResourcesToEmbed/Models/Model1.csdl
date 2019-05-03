@@ -80,7 +80,7 @@
     <Property Name="ScholarshipID" Type="Int32" />
     <Property Name="StudentID" Type="Int32" Nullable="false" />
     <Property Name="LookupID" Type="Int32" Nullable="false" />
-    <Property Name="NewFee" Type="Double" />
+    <Property Name="NewFee" Type="Double" Nullable="false" />
     <NavigationProperty Name="Lookup" Relationship="Self.FK_Fe_Lookup" FromRole="Fe" ToRole="Lookup" />
     <NavigationProperty Name="Scholarshipss" Relationship="Self.FK_Fe_Scholarshipss" FromRole="Fe" ToRole="Scholarshipss" />
     <NavigationProperty Name="Student" Relationship="Self.FK_Fe_Student" FromRole="Fe" ToRole="Student" />
@@ -629,7 +629,7 @@
     <End Role="ClassAttendance" Type="Self.ClassAttendance" Multiplicity="*" />
     <End Role="Student" Type="Self.Student" Multiplicity="*" />
   </Association>
-  <EntityContainer Name="DB49Entities4" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="DB49Entities5" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ClassAttendances" EntityType="Self.ClassAttendance" />
     <EntitySet Name="Courses" EntityType="Self.Course" />
     <EntitySet Name="Departments" EntityType="Self.Department" />

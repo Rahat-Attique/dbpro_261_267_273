@@ -33,7 +33,7 @@ namespace LMS.Controllers
 
         public ActionResult ShowFee()
         {
-            DB49Entities4 db = new DB49Entities4();
+            DB49Entities5 db = new DB49Entities5();
             List<Fee> p = new List<Fee>();
             Fee o = new Fee();
             p = db.Fees.ToList();
@@ -42,11 +42,16 @@ namespace LMS.Controllers
 
         public ActionResult UpFeeChallan()
         {
-            DB49Entities4 db = new DB49Entities4();
-            List<Fe> p = new List<Fe>();
-            Fe o = new Fe();
-            p = db.Fes.ToList();
-            return View(p);
+
+            if (Session["FeeID"] != null)
+            {
+                return View();
+
+            }
+            else
+            {
+                return RedirectToAction("UpdateFee", "Admin");
+            }
         }
 
 

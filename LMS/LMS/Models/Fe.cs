@@ -18,7 +18,7 @@ namespace LMS.Models
         public Nullable<int> ScholarshipID { get; set; }
         public int StudentID { get; set; }
         public int LookupID { get; set; }
-        public Nullable<double> NewFee { get; set; }
+        public double NewFee { get; set; }
     
         public virtual Lookup Lookup { get; set; }
         public virtual Scholarshipss Scholarshipss { get; set; }

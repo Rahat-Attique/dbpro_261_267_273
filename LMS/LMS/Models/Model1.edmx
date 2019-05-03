@@ -81,7 +81,7 @@ warning 6002: The table/view 'DB49.dbo.Expenditure' does not have a primary key 
           <Property Name="ScholarshipID" Type="int" />
           <Property Name="StudentID" Type="int" Nullable="false" />
           <Property Name="LookupID" Type="int" Nullable="false" />
-          <Property Name="NewFee" Type="float" />
+          <Property Name="NewFee" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="Fees">
           <Key>
@@ -878,7 +878,7 @@ warning 6002: The table/view 'DB49.dbo.TimeTable' does not have a primary key de
           <Property Name="ScholarshipID" Type="Int32" />
           <Property Name="StudentID" Type="Int32" Nullable="false" />
           <Property Name="LookupID" Type="Int32" Nullable="false" />
-          <Property Name="NewFee" Type="Double" />
+          <Property Name="NewFee" Type="Double" Nullable="false" />
           <NavigationProperty Name="Lookup" Relationship="Self.FK_Fe_Lookup" FromRole="Fe" ToRole="Lookup" />
           <NavigationProperty Name="Scholarshipss" Relationship="Self.FK_Fe_Scholarshipss" FromRole="Fe" ToRole="Scholarshipss" />
           <NavigationProperty Name="Student" Relationship="Self.FK_Fe_Student" FromRole="Fe" ToRole="Student" />
@@ -1427,7 +1427,7 @@ warning 6002: The table/view 'DB49.dbo.TimeTable' does not have a primary key de
           <End Role="ClassAttendance" Type="Self.ClassAttendance" Multiplicity="*" />
           <End Role="Student" Type="Self.Student" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="DB49Entities4" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DB49Entities5" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ClassAttendances" EntityType="Self.ClassAttendance" />
           <EntitySet Name="Courses" EntityType="Self.Course" />
           <EntitySet Name="Departments" EntityType="Self.Department" />
@@ -1575,7 +1575,7 @@ warning 6002: The table/view 'DB49.dbo.TimeTable' does not have a primary key de
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DB49ModelStoreContainer" CdmEntityContainer="DB49Entities4">
+        <EntityContainerMapping StorageEntityContainer="DB49ModelStoreContainer" CdmEntityContainer="DB49Entities5">
           <EntitySetMapping Name="ClassAttendances">
             <EntityTypeMapping TypeName="DB49Model.ClassAttendance">
               <MappingFragment StoreEntitySet="ClassAttendance">

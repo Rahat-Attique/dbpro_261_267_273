@@ -76,7 +76,7 @@ warning 6002: The table/view 'DB49.dbo.Expenditure' does not have a primary key 
     <Property Name="ScholarshipID" Type="int" />
     <Property Name="StudentID" Type="int" Nullable="false" />
     <Property Name="LookupID" Type="int" Nullable="false" />
-    <Property Name="NewFee" Type="float" />
+    <Property Name="NewFee" Type="float" Nullable="false" />
   </EntityType>
   <EntityType Name="Fees">
     <Key>
