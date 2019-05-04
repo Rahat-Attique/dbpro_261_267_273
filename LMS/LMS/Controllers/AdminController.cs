@@ -288,6 +288,82 @@ namespace LMS.Controllers
                 throw;
             }
         }
+
+        public ActionResult Re()
+        {
+            DB49Entities1 db = new DB49Entities1();
+
+            var ResultList = db.Results.ToList();
+            return View(ResultList);
+        }
+
+
+        public ActionResult ResultReport()
+        {
+            DB49Entities1 db = new DB49Entities1();
+            List<Result> allResults = new List<Result>();
+            allResults = db.Results.ToList();
+
+
+            ReportDocument rd = new ReportDocument();
+            rd.Load(Path.Combine(Server.MapPath("~/Report"), "CrystalReportResult.rpt"));
+
+            rd.SetDataSource(allResults);
+
+            Response.Buffer = false;
+            Response.ClearContent();
+            Response.ClearHeaders();
+
+
+            Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+            stream.Seek(0, SeekOrigin.Begin);
+            return File(stream, "application/pdf", "ResultList.pdf");
+
+
+
+        }
+
+
+        public ActionResult Ex()
+        {
+            DB49Entities1 db = new DB49Entities1();
+
+            var ex = db.Exams.ToList();
+            return View(ex);
+        }
+
+
+        public ActionResult ExamReport()
+        {
+            DB49Entities1 db = new DB49Entities1();
+            List<Exam> exam = new List<Exam>();
+            exam = db.Exams.ToList();
+
+
+            ReportDocument rd = new ReportDocument();
+            rd.Load(Path.Combine(Server.MapPath("~/Report"), "CrystalReportExam.rpt"));
+
+            rd.SetDataSource(exam);
+
+            Response.Buffer = false;
+            Response.ClearContent();
+            Response.ClearHeaders();
+
+
+            Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+            stream.Seek(0, SeekOrigin.Begin);
+            return File(stream, "application/pdf", "ExamList.pdf");
+        }
+
+
+
+
+
+
+
+
+
+
         public ActionResult ReportStudent()
         {
             DB49Entities1 db = new DB49Entities1();
@@ -496,15 +572,14 @@ namespace LMS.Controllers
 
             return View(obj);
         }
-        public ActionResult RegisterEmployee()
+        public ActionResult Reg()
         {
 
             return View();
         }
         [HttpPost]
-        public ActionResult RegisterEmployee(Employee obj)
+        public ActionResult Reg(Employee obj)
         {
-
             try
             {
                 DB49Entities1 db = new DB49Entities1();
@@ -580,6 +655,7 @@ namespace LMS.Controllers
 
 
             return View(obj);
+
         }
         public ActionResult Login()
         {
@@ -589,7 +665,7 @@ namespace LMS.Controllers
         public ActionResult Login(Login l)
 
         {
-            if (l.Email == "Admin" && l.Password == "A123")
+            if (l.Email == "Admin@gmail" && l.Password == "A123")
             {
                 return RedirectToAction("Result", "Admin");
             }

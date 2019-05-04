@@ -11,7 +11,9 @@ namespace LMS.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Login
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,12 +22,16 @@ namespace LMS.Models
             this.Employees = new HashSet<Employee>();
             this.Students = new HashSet<Student>();
         }
-    
+
         public int LoginID { get; set; }
+        [Required(ErrorMessage = "This field is required")]
+        [EmailAddress(ErrorMessage = "Enter Correct Email")]
         public string Email { get; set; }
         public string Type { get; set; }
+        [Required(ErrorMessage = "This field is required")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

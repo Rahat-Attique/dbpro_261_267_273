@@ -261,6 +261,12 @@
       <DependentUpon>CrystalReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\CrystalReportExam.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReportExam.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\CrystalReportFee.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -273,16 +279,10 @@
       <DependentUpon>CrystalReportNewFee.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Report\emp.cs">
+    <Compile Include="Report\CrystalReportResult.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>emp.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Report\student.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>student.rpt</DependentUpon>
+      <DependentUpon>CrystalReportResult.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
@@ -490,6 +490,7 @@
     <Content Include="Views\Admin\Editemp.cshtml" />
     <Content Include="Views\Admin\Allmp.cshtml" />
     <Content Include="Views\Student\viewattendance.cshtml" />
+    <Content Include="Views\Admin\Reg.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -516,6 +517,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\CrystalReportExam.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportExam.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\CrystalReportFee.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReportFee.cs</LastGenOutput>
@@ -524,13 +529,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReportNewFee.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\emp.rpt">
+    <EmbeddedResource Include="Report\CrystalReportResult.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>emp.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\student.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>student.cs</LastGenOutput>
+      <LastGenOutput>CrystalReportResult.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
