@@ -24,9 +24,17 @@ namespace LMS.Models
         public int SectionID { get; set; }
         public System.DateTime Date { get; set; }
         public string Semester { get; set; }
-        public int SessionID { get; set; }
+        public Nullable<int> StudentID { get; set; }
+        public Nullable<int> DepartmentID { get; set; }
+        public Nullable<int> SessionID { get; set; }
+        public int CourseId { get; set; }
+        public int statusid { get; set; }
     
+        public virtual status status { get; set; }
+        public virtual Course Course { get; set; }
+        public virtual Department Department { get; set; }
         public virtual Session Session { get; set; }
+        public virtual Student Student { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student> Students { get; set; }
     }

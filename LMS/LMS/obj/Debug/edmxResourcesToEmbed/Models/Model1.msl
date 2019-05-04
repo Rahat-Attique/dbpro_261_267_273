@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DB49ModelStoreContainer" CdmEntityContainer="DB49Entities5">
+  <EntityContainerMapping StorageEntityContainer="DB49ModelStoreContainer" CdmEntityContainer="DB49Entities7">
     <EntitySetMapping Name="ClassAttendances">
       <EntityTypeMapping TypeName="DB49Model.ClassAttendance">
         <MappingFragment StoreEntitySet="ClassAttendance">
@@ -8,7 +8,11 @@
           <ScalarProperty Name="SectionID" ColumnName="SectionID" />
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="Semester" ColumnName="Semester" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
           <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="statusid" ColumnName="statusid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -170,6 +174,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="status">
+      <EntityTypeMapping TypeName="DB49Model.status">
+        <MappingFragment StoreEntitySet="status">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Status1" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Students">
       <EntityTypeMapping TypeName="DB49Model.Student">
         <MappingFragment StoreEntitySet="Student">
@@ -187,6 +199,7 @@
           <ScalarProperty Name="LoginID" ColumnName="LoginID" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="SectionID" ColumnName="SectionID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -13,10 +13,10 @@ namespace LMS.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DB49Entities5 : DbContext
+    public partial class DB49Entities7 : DbContext
     {
-        public DB49Entities5()
-            : base("name=DB49Entities5")
+        public DB49Entities7()
+            : base("name=DB49Entities7")
         {
         }
     
@@ -41,6 +41,7 @@ namespace LMS.Models
         public virtual DbSet<Scholarshipss> Scholarshipsses { get; set; }
         public virtual DbSet<Sectionss> Sectionsses { get; set; }
         public virtual DbSet<Session> Sessions { get; set; }
+        public virtual DbSet<status> status { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Expenditure> Expenditures { get; set; }
         public virtual DbSet<Section> Sections { get; set; }

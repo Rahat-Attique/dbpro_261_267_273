@@ -19,6 +19,8 @@ namespace LMS.Models
         {
             this.RegisteredCourses = new HashSet<RegisteredCours>();
             this.Sections = new HashSet<Section>();
+            this.Students = new HashSet<Student>();
+            this.Students1 = new HashSet<Student>();
         }
     
         public int SectionID { get; set; }
@@ -28,5 +30,9 @@ namespace LMS.Models
         public virtual ICollection<RegisteredCours> RegisteredCourses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Section> Sections { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Student> Students { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Student> Students1 { get; set; }
     }
 }

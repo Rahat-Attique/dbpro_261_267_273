@@ -31,8 +31,8 @@ namespace LMS.Controllers
 
         public ActionResult ShowFee()
         {
-            DB49Entities5 db = new DB49Entities5();
-          //  List<Fee> p = new List<Fee>();
+            DB49Entities7 db = new DB49Entities7();
+            //  List<Fee> p = new List<Fee>();
             //Fee o = new Fee();
             //p = db.Fees.ToList();
             return View(db.Fees.ToList());
@@ -41,8 +41,7 @@ namespace LMS.Controllers
 
         public ActionResult ReportFee()
         {
-            DB49Entities5 db = new DB49Entities5();
-
+            DB49Entities7 db = new DB49Entities7();
             ReportDocument rd = new ReportDocument();
             rd.Load(Path.Combine(Server.MapPath("~/Report"), "CrystalReportFee.rpt"));
             rd.SetDataSource(db.Fees.ToList());

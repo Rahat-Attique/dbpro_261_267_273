@@ -242,6 +242,9 @@
     <Compile Include="Models\Session.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\status.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Student.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -466,6 +469,9 @@
     <Content Include="Views\Admin\AdminShowUpFeeChallan.cshtml" />
     <Content Include="Views\Student\ShowScholarship.cshtml" />
     <Content Include="Views\Admin\ShowScholarship.cshtml" />
+    <Content Include="Views\Admin\Allstu.cshtml" />
+    <Content Include="Views\Admin\Allemp.cshtml" />
+    <Content Include="Views\Employee\markatt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,6 +17,7 @@ namespace LMS.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Course()
         {
+            this.ClassAttendances = new HashSet<ClassAttendance>();
             this.Exams = new HashSet<Exam>();
             this.RegisteredCourses = new HashSet<RegisteredCours>();
             this.TimeTables = new HashSet<TimeTable>();
@@ -29,6 +30,8 @@ namespace LMS.Models
         public int CreditHours { get; set; }
         public string Semester { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClassAttendance> ClassAttendances { get; set; }
         public virtual Department Department { get; set; }
         public virtual Session Session { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

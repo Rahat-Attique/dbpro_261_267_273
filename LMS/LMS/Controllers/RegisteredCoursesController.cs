@@ -18,7 +18,7 @@ namespace LMS.Controllers
         }
         public ActionResult CourseRegister()
         {
-            DB49Entities5 db = new DB49Entities5();
+            DB49Entities7 db = new DB49Entities7();
 
             List<Course> co = db.Courses.ToList();
             ViewBag.courseList = new SelectList(co, "CourseID", "CourseName");
@@ -40,7 +40,7 @@ namespace LMS.Controllers
             try
             {
                 // string message;
-                DB49Entities5 db = new DB49Entities5();
+                DB49Entities7 db = new DB49Entities7();
 
                 List<Course> co = db.Courses.ToList();
                 ViewBag.courseList = new SelectList(co, "CourseID", "CourseName");
