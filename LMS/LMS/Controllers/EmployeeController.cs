@@ -15,7 +15,7 @@ namespace LMS.Controllers
         }
         public ActionResult markatt()
         {
-            DB49Entities7 db = new DB49Entities7();
+            DB49Entities db = new DB49Entities();
             List<Department> departments = db.Departments.ToList();
             ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
             List<Sectionss> sections = db.Sectionsses.ToList();
@@ -35,7 +35,7 @@ namespace LMS.Controllers
         [HttpPost]
         public ActionResult markatt(ClassAttendance c)
         {
-            DB49Entities7 db = new DB49Entities7();
+            DB49Entities db = new DB49Entities();
             List<Department> departments = db.Departments.ToList();
             ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
             List<Sectionss> sections = db.Sectionsses.ToList();

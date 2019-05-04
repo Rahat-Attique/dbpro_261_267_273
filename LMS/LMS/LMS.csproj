@@ -472,6 +472,7 @@
     <Content Include="Views\Admin\Allstu.cshtml" />
     <Content Include="Views\Admin\Allemp.cshtml" />
     <Content Include="Views\Employee\markatt.cshtml" />
+    <Content Include="Views\Student\ShowStuResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

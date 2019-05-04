@@ -31,7 +31,7 @@ namespace LMS.Controllers
 
         public ActionResult ShowFee()
         {
-            DB49Entities7 db = new DB49Entities7();
+            DB49Entities db = new DB49Entities();
             //  List<Fee> p = new List<Fee>();
             //Fee o = new Fee();
             //p = db.Fees.ToList();
@@ -41,7 +41,7 @@ namespace LMS.Controllers
 
         public ActionResult ReportFee()
         {
-            DB49Entities7 db = new DB49Entities7();
+            DB49Entities db = new DB49Entities();
             ReportDocument rd = new ReportDocument();
             rd.Load(Path.Combine(Server.MapPath("~/Report"), "CrystalReportFee.rpt"));
             rd.SetDataSource(db.Fees.ToList());
@@ -78,7 +78,19 @@ namespace LMS.Controllers
         }
 
 
+        public ActionResult ShowStuResult()
+        {
 
+            if (Session["ResultID"] != null)
+            {
+                return View();
+
+            }
+            else
+            {
+                return RedirectToAction("Result", "Admin");
+            }
+        }
 
 
     }

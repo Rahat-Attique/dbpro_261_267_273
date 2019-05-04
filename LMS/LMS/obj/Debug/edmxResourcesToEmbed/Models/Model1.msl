@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DB49ModelStoreContainer" CdmEntityContainer="DB49Entities7">
+  <EntityContainerMapping StorageEntityContainer="DB49ModelStoreContainer" CdmEntityContainer="DB49Entities">
     <EntitySetMapping Name="ClassAttendances">
       <EntityTypeMapping TypeName="DB49Model.ClassAttendance">
         <MappingFragment StoreEntitySet="ClassAttendance">

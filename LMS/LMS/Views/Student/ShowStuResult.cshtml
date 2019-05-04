@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "ShowStuResult";
+    Layout = "~/Views/Shared/_Student.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">DMC</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <table class="table">
+                            <tr>
+
+                                <th>
+                                    @Html.DisplayName("Grade")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("CreditHours")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Date")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("RegisteredCourseID")
+                                </th>
+
+                                <th>
+                                    @Html.DisplayName(" StudentID")  
+                                </th>
+
+
+                                <th></th>
+                            </tr>
+                            @if (Session["ResultID"] != null)
+                            {
+                            <tr>
+                                <td>
+                                    @Session["Grade"].ToString()
+                                </td>
+                                <td>  @Session["CreditHours"] </td>
+                                <td>  @Session["Date"] </td>
+                                <td> @Session["RegisteredCourseID"] </td>
+                                <td> @Session["StudentID"] </td>
+
+
+
+                            </tr>
+
+                            }
+                        </table>
+
+
+

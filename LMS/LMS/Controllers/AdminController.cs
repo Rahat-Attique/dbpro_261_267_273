@@ -21,17 +21,17 @@ namespace LMS.Controllers
         }
         public ActionResult Allstu()
         {
-            DB49Entities7 db = new DB49Entities7();
+            DB49Entities db = new DB49Entities();
             return View(db.Students.ToList());
         }
         public ActionResult Allemp()
         {
-            DB49Entities7 db = new DB49Entities7();
+            DB49Entities db = new DB49Entities();
             return View(db.Employees.ToList());
         }
         public ActionResult Courses()
         {
-            DB49Entities7 db = new DB49Entities7();
+            DB49Entities db = new DB49Entities();
             List<Department> departments = db.Departments.ToList();
             ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
 
@@ -45,7 +45,7 @@ namespace LMS.Controllers
             try
             {
                 string message;
-                DB49Entities7 db = new DB49Entities7();
+                DB49Entities db = new DB49Entities();
                 List<Department> departments = db.Departments.ToList();
                 ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
 
@@ -89,7 +89,7 @@ namespace LMS.Controllers
 
         public ActionResult Exam()
         {
-            DB49Entities7 db = new DB49Entities7();
+            DB49Entities db = new DB49Entities();
             List<Course> co = db.Courses.ToList();
             ViewBag.courseList = new SelectList(co, "CourseID", "CourseName");
 
@@ -112,7 +112,7 @@ namespace LMS.Controllers
             try
             {
                 string message;
-                DB49Entities7 r = new DB49Entities7();
+                DB49Entities r = new DB49Entities();
                 List<Course> co = r.Courses.ToList();
                 ViewBag.courseList = new SelectList(co, "CourseID", "CourseName");
 
@@ -157,7 +157,7 @@ namespace LMS.Controllers
         }
         public ActionResult Result()
         {
-            DB49Entities7 db = new DB49Entities7();
+            DB49Entities db = new DB49Entities();
           
             List<RegisteredCours> q = db.RegisteredCourses.ToList();
             ViewBag.r = new SelectList(q, "RegisteredCourseID", "CourseID");
@@ -175,7 +175,7 @@ namespace LMS.Controllers
             try
             {
 
-                DB49Entities7 db = new DB49Entities7();
+                DB49Entities db = new DB49Entities();
                 Course f = new Course();
                 int y = f.CourseID;
 
@@ -199,6 +199,32 @@ namespace LMS.Controllers
                 db.Results.Add(r);
                 db.SaveChanges();
 
+                var m = db.Results.Where(n => n.StudentID == obj.StudentID).ToList();
+
+                foreach (var item in m)
+
+                {
+                    // var k = db.Students.Select(new Student { EmailId = l.Email  }).ToList();
+
+                    if (item != null)
+                    {
+
+                        Session["ResultID"] = r.ResultID.ToString();
+                        Session["Grade"] = r.Grade.ToString();
+                        Session["CreditHours"] = r.CreditHours.ToString();
+                        Session["Date"] = r.Date.ToString();
+                        Session["RegisteredCourseID"] = r.RegisteredCourseID.ToString();
+                        Session["StudentID"] = r.StudentID.ToString();
+                        return RedirectToAction("ShowStuResult", "Student");
+                        // message = " Course Registered Successfully.\\nRegisteredCourse Id:" + r.RegisteredCourseID.ToString();
+                        //ViewBag.Message = message;
+
+
+
+
+                    }
+
+                }
             }
 
             catch (DbEntityValidationException e)
@@ -215,7 +241,7 @@ namespace LMS.Controllers
 
         public ActionResult ShowResult()
         {
-            DB49Entities7 db = new DB49Entities7();
+            DB49Entities db = new DB49Entities();
             List<Result> p = new List<Result>();
             Result o = new Result();
             p = db.Results.ToList();
@@ -230,7 +256,7 @@ namespace LMS.Controllers
         }
         public ActionResult ShowCourses()
         {
-            DB49Entities7 db = new DB49Entities7();
+            DB49Entities db = new DB49Entities();
             // List<Course> p = new List<Course>();
             //Course o = new Course();
             //p = db.Courses.ToList();
@@ -242,7 +268,7 @@ namespace LMS.Controllers
 
         public ActionResult ReportCourses()
         {
-            DB49Entities7 db = new DB49Entities7();
+            DB49Entities db = new DB49Entities();
 
             ReportDocument rd = new ReportDocument();
             rd.Load(Path.Combine(Server.MapPath("~/Report"), "CrystalReport.rpt"));
@@ -266,7 +292,7 @@ namespace LMS.Controllers
         [HttpGet]
         public ActionResult EditCourse(int id)
         {
-            using (DB49Entities7 db = new DB49Entities7())
+            using (DB49Entities db = new DB49Entities())
             {
                 List<Department> departments = db.Departments.ToList();
                 ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
@@ -291,7 +317,7 @@ namespace LMS.Controllers
         public ActionResult EditCourse(Course obj, int id)
         {
 
-            using (DB49Entities7 db = new DB49Entities7())
+            using (DB49Entities db = new DB49Entities())
             {
                 List<Department> departments = db.Departments.ToList();
                 ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName");
@@ -320,7 +346,7 @@ namespace LMS.Controllers
 
         public ActionResult ShowExam()
         {
-            DB49Entities7 db = new DB49Entities7();
+            DB49Entities db = new DB49Entities();
             List<Exam> p = new List<Exam>();
             Exam o = new Exam();
             p = db.Exams.ToList();
@@ -328,7 +354,7 @@ namespace LMS.Controllers
         }
         public ActionResult RegisterStudent()
         {
-            DB49Entities7 k = new DB49Entities7();
+            DB49Entities k = new DB49Entities();
            
             List<Department> departments = k.Departments.ToList();
             ViewBag.DepartmentList = new SelectList(departments, "DepartmentID", "DepartmentName ");
@@ -344,7 +370,7 @@ namespace LMS.Controllers
 
             try
             {
-                DB49Entities7 db = new DB49Entities7();
+                DB49Entities db = new DB49Entities();
 
                 List<Department> list = db.Departments.ToList();
                 ViewBag.DepartmentList = new SelectList(list, "DepartmentID", "DepartmentName");
@@ -438,7 +464,7 @@ namespace LMS.Controllers
 
             try
             {
-                DB49Entities7 db = new DB49Entities7();
+                DB49Entities db = new DB49Entities();
 
                 Employee k = new Employee();
 
@@ -527,7 +553,7 @@ namespace LMS.Controllers
 
             else
             {
-                using (DB49Entities7 db = new DB49Entities7())
+                using (DB49Entities db = new DB49Entities())
                 {
 
                     var v = db.Logins.Any(x => x.Email == l.Email && x.Password == l.Password);//.ToList();// (from Login in db.Logins where Login.Email == l.Email && Login.Password == l.Password select Login.Type);
@@ -616,7 +642,7 @@ namespace LMS.Controllers
 
         public ActionResult AddFee()
         {
-            DB49Entities7 db = new DB49Entities7();
+            DB49Entities db = new DB49Entities();
             return View();
         }
 
@@ -626,7 +652,7 @@ namespace LMS.Controllers
             try
             {
                 string message;
-                DB49Entities7 db = new DB49Entities7();
+                DB49Entities db = new DB49Entities();
 
                 // Student l = new Student();
                 Fee c = new Fee();
@@ -659,7 +685,7 @@ namespace LMS.Controllers
         public ActionResult AddScholarship()
         {
 
-            DB49Entities7 k = new DB49Entities7();
+            DB49Entities k = new DB49Entities();
 
             List<Student> students = k.Students.ToList();
             ViewBag.StudentList = new SelectList(students, "StudentID", "Name");
@@ -671,7 +697,7 @@ namespace LMS.Controllers
 
         public ActionResult ShowScholarship()
         {
-            DB49Entities7 db = new DB49Entities7();
+            DB49Entities db = new DB49Entities();
             List<Scholar> p = new List<Scholar>();
             Scholar o = new Scholar();
             p = db.Scholars.ToList();
@@ -684,7 +710,7 @@ namespace LMS.Controllers
             try
             {
                 string message;
-                DB49Entities7 k = new DB49Entities7();
+                DB49Entities k = new DB49Entities();
 
                 List<Student> students = k.Students.ToList();
                 ViewBag.StudentList = new SelectList(students, "StudentID", "Name");
@@ -722,7 +748,7 @@ namespace LMS.Controllers
 
         public ActionResult UpdateFee()
         {
-            DB49Entities7 k = new DB49Entities7();
+            DB49Entities k = new DB49Entities();
 
             List<Student> students = k.Students.ToList();
             ViewBag.StudentList = new SelectList(students, "StudentID", "Name");
@@ -740,7 +766,7 @@ namespace LMS.Controllers
             try
             { 
 
-            DB49Entities7 k = new DB49Entities7();
+            DB49Entities k = new DB49Entities();
 
             List<Student> students = k.Students.ToList();
             ViewBag.StudentList = new SelectList(students, "StudentID", "Name");
@@ -810,13 +836,13 @@ namespace LMS.Controllers
 
         public ActionResult AdminShowUpFeeChallan()
         {
-            DB49Entities7 db = new DB49Entities7();
+            DB49Entities db = new DB49Entities();
             return View(db.Fes.ToList());
         }
 
         public ActionResult ReportScholarshipFee()
         {
-            DB49Entities7 db = new DB49Entities7();
+            DB49Entities db = new DB49Entities();
 
             ReportDocument rd = new ReportDocument();
             rd.Load(Path.Combine(Server.MapPath("~/Report"), "CrystalReportNewFee.rpt"));
