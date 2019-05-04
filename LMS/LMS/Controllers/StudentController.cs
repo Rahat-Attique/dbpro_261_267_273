@@ -14,7 +14,7 @@ namespace LMS.Controllers
     public class StudentController : Controller
     {
         // GET: Student
-    
+        DB49Entities1 db = new DB49Entities1();
         public ActionResult StudentDetails()
         {
             if (Session["LoginID"] != null)
@@ -28,10 +28,25 @@ namespace LMS.Controllers
             }
 
         }
+        public ActionResult viewattendance(int id)
+        {
+            List<string> StudentList = new List<string>();
+            ClassAttendance a = new ClassAttendance();
+            foreach (ClassAttendance s in db.ClassAttendances)
+            {
+                var v = db.ClassAttendances.Where(x => x.StudentID == id).ToList();
+                foreach (var item in v)
+                {
+                    a.StudentList.Add(item);
+                }
 
+            }
+
+            return View(a);
+        }
         public ActionResult ShowFee()
         {
-            DB49Entities db = new DB49Entities();
+            DB49Entities1 db = new DB49Entities1();
             //  List<Fee> p = new List<Fee>();
             //Fee o = new Fee();
             //p = db.Fees.ToList();
@@ -41,7 +56,7 @@ namespace LMS.Controllers
 
         public ActionResult ReportFee()
         {
-            DB49Entities db = new DB49Entities();
+            DB49Entities1 db = new DB49Entities1();
             ReportDocument rd = new ReportDocument();
             rd.Load(Path.Combine(Server.MapPath("~/Report"), "CrystalReportFee.rpt"));
             rd.SetDataSource(db.Fees.ToList());

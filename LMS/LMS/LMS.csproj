@@ -273,6 +273,18 @@
       <DependentUpon>CrystalReportNewFee.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\emp.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>emp.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\student.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>student.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -473,6 +485,11 @@
     <Content Include="Views\Admin\Allemp.cshtml" />
     <Content Include="Views\Employee\markatt.cshtml" />
     <Content Include="Views\Student\ShowStuResult.cshtml" />
+    <Content Include="Views\Admin\Allst.cshtml" />
+    <Content Include="Views\Admin\EditStu.cshtml" />
+    <Content Include="Views\Admin\Editemp.cshtml" />
+    <Content Include="Views\Admin\Allmp.cshtml" />
+    <Content Include="Views\Student\viewattendance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -506,6 +523,14 @@
     <EmbeddedResource Include="Report\CrystalReportNewFee.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReportNewFee.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\emp.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>emp.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\student.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>student.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

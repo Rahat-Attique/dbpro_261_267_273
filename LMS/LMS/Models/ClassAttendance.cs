@@ -19,7 +19,7 @@ namespace LMS.Models
         {
             this.Students = new HashSet<Student>();
         }
-    
+        public List<ClassAttendance> StudentList = new List<ClassAttendance>();
         public int AttendanceID { get; set; }
         public int SectionID { get; set; }
         public System.DateTime Date { get; set; }

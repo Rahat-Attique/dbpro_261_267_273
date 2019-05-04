@@ -709,7 +709,7 @@
     <End Role="ClassAttendance" Type="Self.ClassAttendance" Multiplicity="*" />
     <End Role="Student" Type="Self.Student" Multiplicity="*" />
   </Association>
-  <EntityContainer Name="DB49Entities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="DB49Entities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ClassAttendances" EntityType="Self.ClassAttendance" />
     <EntitySet Name="Courses" EntityType="Self.Course" />
     <EntitySet Name="Departments" EntityType="Self.Department" />
