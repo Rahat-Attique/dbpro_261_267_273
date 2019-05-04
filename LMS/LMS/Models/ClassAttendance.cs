@@ -19,6 +19,7 @@ namespace LMS.Models
         {
             this.Students = new HashSet<Student>();
         }
+
         public List<ClassAttendance> StudentList = new List<ClassAttendance>();
         public int AttendanceID { get; set; }
         public int SectionID { get; set; }
@@ -29,7 +30,7 @@ namespace LMS.Models
         public Nullable<int> SessionID { get; set; }
         public int CourseId { get; set; }
         public int statusid { get; set; }
-    
+
         public virtual status status { get; set; }
         public virtual Course Course { get; set; }
         public virtual Department Department { get; set; }

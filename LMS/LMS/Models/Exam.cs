@@ -11,11 +11,13 @@ namespace LMS.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Exam
     {
         public int ExamID { get; set; }
         public System.DateTime ExamDate { get; set; }
+        [Required(ErrorMessage = "This field is required")]
         public int SessionID { get; set; }
         public int DepartmentId { get; set; }
         public int CourseID { get; set; }

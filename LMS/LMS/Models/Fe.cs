@@ -11,13 +11,15 @@ namespace LMS.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Fe
     {
         public int FeeID { get; set; }
         public Nullable<int> ScholarshipID { get; set; }
         public int StudentID { get; set; }
         public int LookupID { get; set; }
+        [Required(ErrorMessage = "This field is required")]
         public double NewFee { get; set; }
     
         public virtual Lookup Lookup { get; set; }

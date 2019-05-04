@@ -14,7 +14,7 @@ namespace LMS.Controllers
     public class StudentController : Controller
     {
         // GET: Student
-        DB49Entities1 db = new DB49Entities1();
+        DB49Entities db = new DB49Entities();
         public ActionResult StudentDetails()
         {
             if (Session["LoginID"] != null)
@@ -46,7 +46,7 @@ namespace LMS.Controllers
         }
         public ActionResult ShowFee()
         {
-            DB49Entities1 db = new DB49Entities1();
+            DB49Entities db = new DB49Entities();
             //  List<Fee> p = new List<Fee>();
             //Fee o = new Fee();
             //p = db.Fees.ToList();
@@ -56,7 +56,7 @@ namespace LMS.Controllers
 
         public ActionResult ReportFee()
         {
-            DB49Entities1 db = new DB49Entities1();
+            DB49Entities db = new DB49Entities();
             ReportDocument rd = new ReportDocument();
             rd.Load(Path.Combine(Server.MapPath("~/Report"), "CrystalReportFee.rpt"));
             rd.SetDataSource(db.Fees.ToList());
@@ -105,6 +105,15 @@ namespace LMS.Controllers
             {
                 return RedirectToAction("Result", "Admin");
             }
+        }
+
+        public ActionResult ShowScholarship()
+        {
+            DB49Entities db = new DB49Entities();
+            List<Scholar> p = new List<Scholar>();
+            Scholar o = new Scholar();
+            p = db.Scholars.ToList();
+            return View(p);
         }
 
 

@@ -285,6 +285,12 @@
       <DependentUpon>CrystalReportResult.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\CrystalReportStudent.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReportStudent.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -440,7 +446,7 @@
     <Content Include="Views\EmpRegister\showClassAttendence.cshtml" />
     <Content Include="Views\EmpRegister\stuAttendence.cshtml" />
     <Content Include="Views\EmpRegister\ShowstuAttendence.cshtml" />
-    <Content Include="Views\Shared\_Admin.cshtml" />
+    <Content Include="Views\EmpRegister\_Admin.cshtml" />
     <Content Include="Views\Admin\AdminReports.cshtml" />
     <Content Include="Views\Admin\Courses.cshtml" />
     <Content Include="Views\Admin\Exam.cshtml" />
@@ -491,6 +497,10 @@
     <Content Include="Views\Admin\Allmp.cshtml" />
     <Content Include="Views\Student\viewattendance.cshtml" />
     <Content Include="Views\Admin\Reg.cshtml" />
+    <Content Include="Views\Admin\Allstt.cshtml" />
+    <Content Include="Views\Shared\_Admin.cshtml" />
+    <Content Include="Views\Admin\Allmpp.cshtml" />
+    <Content Include="Views\Admin\Re.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -532,6 +542,10 @@
     <EmbeddedResource Include="Report\CrystalReportResult.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReportResult.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\CrystalReportStudent.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportStudent.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

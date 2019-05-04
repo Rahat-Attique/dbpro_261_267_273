@@ -376,7 +376,6 @@ C:\Users\rafia\Desktop\dbpro_261_267_273\LMS\LMS\bin\Microsoft.AI.WindowsServer.
 C:\Users\rafia\Desktop\dbpro_261_267_273\LMS\LMS\bin\Microsoft.AI.Web.xml
 C:\Users\rafia\Desktop\dbpro_261_267_273\LMS\LMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\rafia\Desktop\dbpro_261_267_273\LMS\LMS\obj\Debug\LMS.csproj.CopyComplete
-C:\Users\rafia\Desktop\dbpro_261_267_273\LMS\LMS\obj\Debug\LMS.csprojAssemblyReference.cache
 C:\Users\rafia\Desktop\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.CrystalReports.Engine.dll
 C:\Users\rafia\Desktop\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.ReportSource.dll
 C:\Users\rafia\Desktop\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.Shared.dll
@@ -426,3 +425,4 @@ E:\ayita things\Git hub repositories\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisi
 E:\ayita things\Git hub repositories\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
 E:\ayita things\Git hub repositories\dbpro_261_267_273\LMS\LMS\bin\stdole.dll
 C:\Users\rahat\Desktop\dbpro_261_267_273\LMS\LMS\obj\Debug\LMS.csprojAssemblyReference.cache
+C:\Users\rafia\Desktop\dbpro_261_267_273\LMS\LMS\obj\Debug\LMS.csprojAssemblyReference.cache

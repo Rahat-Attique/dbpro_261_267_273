@@ -1,0 +1,67 @@
+﻿@model IEnumerable<LMS.Models.Result>
+
+@{
+    ViewBag.Title = "Re";
+    Layout = "~/Views/Shared/_Student.cshtml";
+}
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">View Result</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+
+                        <p>
+                            <a class="btn btn-primary" href="@Url.Action("ResultReport")">Download Report</a>
+                        </p>
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Grade)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CreditHours)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Date)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.StudentID)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.RegisteredCours.RegisteredCourseID)
+                                </th>
+                               
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Grade)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CreditHours)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Date)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.StudentID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RegisteredCours.RegisteredCourseID)
+                                    </td>
+                                   
+                                </tr>
+                            }
+
+                        </table>

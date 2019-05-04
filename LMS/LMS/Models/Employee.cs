@@ -11,7 +11,8 @@ namespace LMS.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Employee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,17 +23,29 @@ namespace LMS.Models
         }
     
         public int EmployeeID { get; set; }
+        [Required(ErrorMessage = "This field is required")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "This field is required")]
         public string FatherName { get; set; }
+        [Required(ErrorMessage = "This field is required")]
         public string CNIC { get; set; }
+        [Required(ErrorMessage = "This field is required")]
         public string Designation { get; set; }
+        [Required(ErrorMessage = "This field is required")]
         public string Address { get; set; }
+        [Required(ErrorMessage = "This field is required")]
         public string ContactNumber { get; set; }
+        [Required(ErrorMessage = "This field is required")]
         public string EmailID { get; set; }
+        [Required(ErrorMessage = "This field is required")]
         public int MonthlySalary { get; set; }
+        [Required(ErrorMessage = "This field is required")]
         public System.DateTime DOB { get; set; }
+
         public int LoginID { get; set; }
+        [Required(ErrorMessage = "This field is required")]
         public string Type { get; set; }
+        [Required(ErrorMessage = "This field is required")]
         public string Password { get; set; }
     
         public virtual Login Login { get; set; }

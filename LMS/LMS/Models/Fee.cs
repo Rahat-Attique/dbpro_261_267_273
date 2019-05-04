@@ -11,11 +11,14 @@ namespace LMS.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Fee
     {
         public int FeeId { get; set; }
+        [Required(ErrorMessage = "This field is required")]
         public int Fees { get; set; }
+        [Required(ErrorMessage = "This field is required")]
         public string Semester { get; set; }
         public System.DateTime Date { get; set; }
     }
