@@ -123,13 +123,11 @@ warning 6002: The table/view 'DB49.dbo.Expenditure' does not have a primary key 
       <PropertyRef Name="ResultID" />
     </Key>
     <Property Name="ResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SectionID" Type="int" />
-    <Property Name="CGPA" Type="float" />
-    <Property Name="Grade" Type="nvarchar" MaxLength="50" />
+    <Property Name="Grade" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="CreditHours" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="SessionId" Type="int" />
-    <Property Name="Date" Type="datetime" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="RegisteredCourseID" Type="int" Nullable="false" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Salary">
     <Key>
@@ -475,18 +473,6 @@ warning 6002: The table/view 'DB49.dbo.TimeTable' does not have a primary key de
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Result_Session">
-    <End Role="Session" Type="Self.Session" Multiplicity="0..1" />
-    <End Role="Result" Type="Self.Result" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Session">
-        <PropertyRef Name="SessionID" />
-      </Principal>
-      <Dependent Role="Result">
-        <PropertyRef Name="SessionId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Salary_Employee">
     <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
     <End Role="Salary" Type="Self.Salary" Multiplicity="*" />
@@ -822,10 +808,6 @@ warning 6002: The table/view 'DB49.dbo.TimeTable' does not have a primary key de
     </AssociationSet>
     <AssociationSet Name="FK_Result_RegisteredCourses" Association="Self.FK_Result_RegisteredCourses">
       <End Role="RegisteredCourses" EntitySet="RegisteredCourses" />
-      <End Role="Result" EntitySet="Result" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Result_Session" Association="Self.FK_Result_Session">
-      <End Role="Session" EntitySet="Session" />
       <End Role="Result" EntitySet="Result" />
     </AssociationSet>
     <AssociationSet Name="FK_Salary_Employee" Association="Self.FK_Salary_Employee">

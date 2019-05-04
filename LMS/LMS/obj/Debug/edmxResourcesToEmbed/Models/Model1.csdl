@@ -143,15 +143,12 @@
       <PropertyRef Name="ResultID" />
     </Key>
     <Property Name="ResultID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SectionID" Type="Int32" />
-    <Property Name="CGPA" Type="Double" />
-    <Property Name="Grade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Grade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="CreditHours" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="SessionId" Type="Int32" />
-    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="RegisteredCourseID" Type="Int32" Nullable="false" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="RegisteredCours" Relationship="Self.FK_Result_RegisteredCourses" FromRole="Result" ToRole="RegisteredCourses" />
-    <NavigationProperty Name="Session" Relationship="Self.FK_Result_Session" FromRole="Result" ToRole="Session" />
     <NavigationProperty Name="StudentResults" Relationship="Self.FK_StudentResult_Result" FromRole="Result" ToRole="StudentResult" />
   </EntityType>
   <EntityType Name="Salary">
@@ -204,7 +201,6 @@
     <NavigationProperty Name="ClassAttendances" Relationship="Self.FK_ClassAttendance_Session" FromRole="Session" ToRole="ClassAttendance" />
     <NavigationProperty Name="Courses" Relationship="Self.FK_Course_Session" FromRole="Session" ToRole="Course" />
     <NavigationProperty Name="Exams" Relationship="Self.FK_Exam_Session" FromRole="Session" ToRole="Exam" />
-    <NavigationProperty Name="Results" Relationship="Self.FK_Result_Session" FromRole="Session" ToRole="Result" />
     <NavigationProperty Name="Sections" Relationship="Self.FK_Section_Session" FromRole="Session" ToRole="Section" />
     <NavigationProperty Name="Students" Relationship="Self.FK_Student_Session" FromRole="Session" ToRole="Student" />
   </EntityType>
@@ -577,18 +573,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Result_Session">
-    <End Role="Session" Type="Self.Session" Multiplicity="0..1" />
-    <End Role="Result" Type="Self.Result" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Session">
-        <PropertyRef Name="SessionID" />
-      </Principal>
-      <Dependent Role="Result">
-        <PropertyRef Name="SessionId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_StudentResult_Result">
     <End Role="Result" Type="Self.Result" Multiplicity="1" />
     <End Role="StudentResult" Type="Self.StudentResult" Multiplicity="*" />
@@ -838,10 +822,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_Result_RegisteredCourses" Association="Self.FK_Result_RegisteredCourses">
       <End Role="RegisteredCourses" EntitySet="RegisteredCourses" />
-      <End Role="Result" EntitySet="Results" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Result_Session" Association="Self.FK_Result_Session">
-      <End Role="Session" EntitySet="Sessions" />
       <End Role="Result" EntitySet="Results" />
     </AssociationSet>
     <AssociationSet Name="FK_StudentResult_Result" Association="Self.FK_StudentResult_Result">

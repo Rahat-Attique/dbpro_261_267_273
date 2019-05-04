@@ -158,22 +158,71 @@ namespace LMS.Controllers
         public ActionResult Result()
         {
             DB49Entities7 db = new DB49Entities7();
-            ViewBag.departments = db.Departments.ToList();
+          
+            List<RegisteredCours> q = db.RegisteredCourses.ToList();
+            ViewBag.r = new SelectList(q, "RegisteredCourseID", "CourseID");
+            List<Student> b = db.Students.ToList();
+            ViewBag.u = new SelectList(b, "StudentId", "Name");
+         
+
             return View();
-        }
 
-        public ActionResult StudentsFunction(int DepartmentsID)
+
+        }
+        [HttpPost]
+        public ActionResult Result(Result obj)
         {
-            DB49Entities7 db = new DB49Entities7();
-            return Json(db.Students.Where(s => s.DepartmentID == DepartmentsID).Select(s => new {
+            try
+            {
 
-                Id = s.StudentId,
-                name = s.Name,
-            }).ToList(),JsonRequestBehavior.AllowGet);
+                DB49Entities7 db = new DB49Entities7();
+                Course f = new Course();
+                int y = f.CourseID;
+
+
+                List<RegisteredCours> q = db.RegisteredCourses.ToList();
+                ViewBag.r = new SelectList(q, "RegisteredCourseID", "CourseID");
+                List<Student> b = db.Students.ToList();
+                ViewBag.u = new SelectList(b, "StudentId", "Name");
+
+
+
+                Result r = new Result();
+
+
+                r.Grade = obj.Grade;
+                r.CreditHours = obj.CreditHours;
+
+                r.Date = obj.Date;
+                r.RegisteredCourseID = obj.RegisteredCourseID;
+                r.StudentID = obj.StudentID;
+                db.Results.Add(r);
+                db.SaveChanges();
+
+            }
+
+            catch (DbEntityValidationException e)
+            {
+                Console.WriteLine(e.ToString());
+
+            }
+            return View(obj);
+
+
+
         }
+
+
         public ActionResult ShowResult()
         {
-            return View();
+            DB49Entities7 db = new DB49Entities7();
+            List<Result> p = new List<Result>();
+            Result o = new Result();
+            p = db.Results.ToList();
+            return View(p);
+
+
+        
         }
         public ActionResult StudentResult()
         {

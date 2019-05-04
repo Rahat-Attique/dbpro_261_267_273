@@ -410,3 +410,19 @@ C:\Users\rahat\Desktop\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.ReportAppS
 C:\Users\rahat\Desktop\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
 C:\Users\rahat\Desktop\dbpro_261_267_273\LMS\LMS\bin\stdole.dll
 C:\Users\rahat\Desktop\dbpro_261_267_273\LMS\LMS\obj\Debug\LMS.csprojAssemblyReference.cache
+E:\ayita things\Git hub repositories\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.CrystalReports.Engine.dll
+E:\ayita things\Git hub repositories\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.ReportSource.dll
+E:\ayita things\Git hub repositories\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.Shared.dll
+E:\ayita things\Git hub repositories\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+E:\ayita things\Git hub repositories\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+E:\ayita things\Git hub repositories\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+E:\ayita things\Git hub repositories\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+E:\ayita things\Git hub repositories\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+E:\ayita things\Git hub repositories\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+E:\ayita things\Git hub repositories\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+E:\ayita things\Git hub repositories\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+E:\ayita things\Git hub repositories\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+E:\ayita things\Git hub repositories\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+E:\ayita things\Git hub repositories\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+E:\ayita things\Git hub repositories\dbpro_261_267_273\LMS\LMS\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+E:\ayita things\Git hub repositories\dbpro_261_267_273\LMS\LMS\bin\stdole.dll

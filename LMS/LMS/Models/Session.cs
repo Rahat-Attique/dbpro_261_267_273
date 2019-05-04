@@ -20,7 +20,6 @@ namespace LMS.Models
             this.ClassAttendances = new HashSet<ClassAttendance>();
             this.Courses = new HashSet<Course>();
             this.Exams = new HashSet<Exam>();
-            this.Results = new HashSet<Result>();
             this.Sections = new HashSet<Section>();
             this.Students = new HashSet<Student>();
         }
@@ -34,8 +33,6 @@ namespace LMS.Models
         public virtual ICollection<Course> Courses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Exam> Exams { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Result> Results { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Section> Sections { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

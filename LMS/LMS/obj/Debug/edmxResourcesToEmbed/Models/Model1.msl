@@ -121,13 +121,11 @@
       <EntityTypeMapping TypeName="DB49Model.Result">
         <MappingFragment StoreEntitySet="Result">
           <ScalarProperty Name="ResultID" ColumnName="ResultID" />
-          <ScalarProperty Name="SectionID" ColumnName="SectionID" />
-          <ScalarProperty Name="CGPA" ColumnName="CGPA" />
           <ScalarProperty Name="Grade" ColumnName="Grade" />
           <ScalarProperty Name="CreditHours" ColumnName="CreditHours" />
-          <ScalarProperty Name="SessionId" ColumnName="SessionId" />
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="RegisteredCourseID" ColumnName="RegisteredCourseID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
